@@ -11,6 +11,6 @@ class News < ActiveRecord::Base
   end
   
   def image
-    "http://localhost:3000" + self.cover.url
+    Settings.base_url + self.cover.url
   end
 end

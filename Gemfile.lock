@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: a8253e7106f3d45d52efde930568af432399a5ae
+  specs:
+    simple_form (2.1.0.dev)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
+
+GIT
   remote: git://github.com/railsjedi/rails_config.git
   revision: a01ba2e2296f93a7c0b513ee4f7d99c1261b0f2c
   specs:
@@ -133,6 +141,7 @@ DEPENDENCIES
   rails (= 3.2.8)
   rails_config!
   sass-rails (~> 3.2.3)
+  simple_form!
   sqlite3
   uglifier (>= 1.0.3)
   will_paginate (~> 3.0)

@@ -8,7 +8,23 @@
 </head>
 <body>
 
-<%= yield %>
+	<div class="container-fluid">
+	  <div class="row-fluid">
+	    <div class="span9">
+				<div class="well">
+					<!--Body content-->
+					<%= yield %>
+				</div>
+	      <!--Sidebar content-->
+	    </div>
+	    <div class="span3">
+				<div class="well sidebar-nav">
+					news list
+				</div>
+	    </div>
+	  </div>
+	</div>
+
 
 </body>
 </html>
