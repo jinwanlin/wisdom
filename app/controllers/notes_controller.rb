@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    @notes = Note.where(:parent_id => nil)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,7 +41,14 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(params[:note])
-
+    
+    #add community id
+    user = User.find params[:note][:user_id]
+    @note.community = user.communities.first
+    
+    #add attachment
+    @note.attachments << Attachment.new(:source => params[:attachment]) unless params[:attachment].blank?
+    
     respond_to do |format|
       if @note.save
         format.html { redirect_to @note, notice: 'Note was successfully created.' }

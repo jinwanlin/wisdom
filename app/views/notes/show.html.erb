@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
-  <%= @note.title %>
-</p>
-
-<p>
   <b>Content:</b>
   <%= @note.content %>
 </p>
 
 <p>
   <b>User:</b>
-  <%= @note.user %>
+  <%= @note.user.email %>
+</p>
+
+<p>
+	<b>Image:</b>
+	<%= image_tag @note.attachments.first.source.url unless @note.attachments.blank? %>
 </p>
 
 

@@ -1,27 +1,31 @@
-<h1>Listing notes</h1>
+<% content_for :header do -%>
+	<h3>微博列表 - <%= link_to 'json format', notes_path(:json) %></h3>
+<% end -%>
 
-<table>
+<table class="table table-hover">
   <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>User</th>
+    <th>内容</th>
+    <th>发布者</th>
+    <th>所属小区</th>
+    <th>创建时间</th>
+    <th></th>		
     <th></th>
-    <th></th>
-    <th></th>
+    <th>↓</th>
   </tr>
 
 <% @notes.each do |note| %>
   <tr>
-    <td><%= note.title %></td>
     <td><%= note.content %></td>
-    <td><%= note.user %></td>
+    <td><%= note.user.email %></td>
+    <td><%= note.community.name %></td>
+		<td><%= l note.created_at %></td>
     <td><%= link_to 'Show', note %></td>
-    <td><%= link_to 'Edit', edit_note_path(note) %></td>
     <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<td><%= link_to 'json', note_path(note, :json) %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Note', new_note_path %>
+<%= link_to '创建微博', new_note_path , {:class => "btn"} %>
