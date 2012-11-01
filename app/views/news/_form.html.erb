@@ -1,4 +1,5 @@
-<%= simple_form_for(@news, :html => { :multipart => true }) do |f| %>
+<div style="padding: 0px 68px; ">
+<%= simple_form_for(@news, :html => { :multipart => true, :class => 'form-horizontal' }) do |f| %>
   <% if @news.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
@@ -10,17 +11,14 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.input :title %>
-  </div>
-  <div class="field">
-    <%= f.input :content %>
-  </div>
-	<div class="field">
-		<%= f.file_field :cover %>
+	<div class="form-inputs">
+		<%= f.input :title, :required => true, :label => '标题' %>
+		<%= f.input :content, :input_html => {:class => 'content'}, :label => '内容' %>
+		<%= f.input :cover, :label => '图片' %>
 	</div>
-  <div class="actions">
-    <%= f.button :submit %>
-  </div>
+	<div class="form-actions">
+		<%= f.button :submit, {:class => "btn btn-primary"} %>
+		<%= link_to 'Back', news_index_path, {:class => "btn"} %>
+	</div>
 <% end %>
+</div>

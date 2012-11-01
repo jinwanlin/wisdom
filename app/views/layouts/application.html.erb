@@ -4,14 +4,50 @@
   <title>Wisdom</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+	<style type="text/css">
+		body {
+			padding-top: 60px;
+		 	padding-bottom: 40px;
+		}
+   .sidebar-nav {
+     	padding: 9px 0;
+   }
+ </style>
+
   <%= csrf_meta_tags %>
 </head>
-<body>
 
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a>
+				<a class="brand" href="#">智慧社区</a>
+				<div class="nav-collapse collapse">
+					<p class="navbar-text pull-right">
+						Logged in as <a href="#" class="navbar-link">Username</a>
+					</p>
+					<ul class="nav">
+						<li class="active">
+							<a href="#">主页</a>
+						</li>
+						<li>
+							<a href="#about">关于</a>
+						</li>
+						<li>
+							<a href="#contact">联系</a>
+						</li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+
+	
 	<div class="container-fluid">
 	  <div class="row-fluid">
 	    <div class="span9">
-				<div class="well">
+				<div class="well-white">
 					<!--Body content-->
 					<%= yield %>
 				</div>
@@ -19,7 +55,12 @@
 	    </div>
 	    <div class="span3">
 				<div class="well sidebar-nav">
-					news list
+					<ul class="nav nav-list">
+						<%= nav_to "新闻管理", news_index_path, 'news' %>
+						<%= nav_to "用户管理", users_index_path, 'users' %>
+						<%= nav_to "小区管理", communities_path, 'communities' %>
+						<%= nav_to "微博管理", notes_path, 'notes' %>
+					</ul>
 				</div>
 	    </div>
 	  </div>

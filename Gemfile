@@ -45,6 +45,8 @@ gem "paperclip", "~> 3.0"
 gem "rails_config", :git => 'git://github.com/railsjedi/rails_config.git'
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 
+gem 'devise'
+
 
 
 

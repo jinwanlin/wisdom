@@ -1,4 +1,13 @@
 Wisdom::Application.routes.draw do
+
+  get "users/index"
+
+  resources :notes
+
+  resources :communities
+
+  devise_for :users
+
   resources :news
 
   # The priority is based upon order of creation:
