@@ -1,5 +1,5 @@
 <div style="padding: 0px 68px; ">
-	<%= simple_form_for(@note, :html => {:multipart => true}) do |f| %>
+	<%= simple_form_for(@note, format: :json, :html => {:multipart => true}) do |f| %>
 	  <div class="form-inputs">
 	    <%= f.association :user, :label_method => :email, :include_blank => false, :required => true %>
 	    <%= f.input :content, :required => true, :input_html => {:class => 'content'} %>

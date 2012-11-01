@@ -1,15 +1,33 @@
 class NotesController < ApplicationController
+  before_filter :authenticate_user!
+  skip_before_filter :verify_authenticity_token
+  # before_filter :parse_json_params, :if => "params[:format] == 'json'"
+  
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.where(:parent_id => nil)
-
+    @notes = Note
+    @notes = @notes.where(:parent_id => params[:parent_id]) if params[:parent_id].present?
+    @notes = @notes.where(:community_id => params[:community_id]) if params[:community_id].present?
+    @notes = @notes.where("updated_at < ?", Time.parse(params[:time_begin])) if params[:time_begin].present?
+    @notes = @notes.where("updated_at > ?", Time.parse(params[:time_end])) if params[:time_end].present?
+    @notes = @notes.order("updated_at DESC").paginate :page => params[:page], :per_page => params[:per_page]
+    
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @notes }
+      format.json { render json: to_json_with_pagination(@notes) }
     end
   end
-
+  
+  def photos
+    @photos = Attachment
+    @photos = @photos.where("notes.community_id = ?", params[:community_id]).joins(:notes) if params[:community_id].present?
+    @photos = @photos.where("updated_at > ?", Time.parse(params[:timestamp])) if params[:timestamp].present?
+    @photos = @photos.order("updated_at ASC").paginate :page => params[:page], :per_page => params[:per_page]
+    
+    render json: to_json_with_pagination(@photos)
+  end
+  
   # GET /notes/1
   # GET /notes/1.json
   def show
@@ -42,9 +60,8 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(params[:note])
     
-    #add community id
-    user = User.find params[:note][:user_id]
-    @note.community = user.communities.first
+    # user
+    # params[:note][:user_id] = current_user.id if params[:note][:user_id].blank?
     
     #add attachment
     @note.attachments << Attachment.new(:source => params[:attachment]) unless params[:attachment].blank?
@@ -52,10 +69,12 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.save
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render json: @note, status: :created, location: @note }
+        format.json { 
+          render json: {:id => @note.id}, status: :created, location: @note 
+        }
       else
         format.html { render action: "new" }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.json { render :text => "error", :status => 401 }
       end
     end
   end
@@ -85,6 +104,14 @@ class NotesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to notes_url }
       format.json { head :no_content }
+    end
+  end
+  
+  private
+  def parse_json_params
+    params[:note] = []
+    %w(content user_id community_id parent_id attachment).each do |p|
+      # puts params[p] if params[p].present?
     end
   end
 end

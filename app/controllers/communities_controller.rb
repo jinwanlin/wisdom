@@ -2,11 +2,13 @@ class CommunitiesController < ApplicationController
   # GET /communities
   # GET /communities.json
   def index
-    @communities = Community.all
+    @communities = Community.paginate(:page => params[:page], :per_page => params[:per_page])
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @communities }
+      format.json { 
+        render json: to_json_with_pagination(@communities) 
+      }
     end
   end
 

@@ -1,0 +1,6 @@
+# interface test data:
+# create note
+curl -d "auth_token=SoDkocw2aZ1Eqy2WyHex&note[content]=test api&note[user_id]=1&note[community_id]=1" http://localhost:3000/notes.json
+
+#can't use
+curl -d -F "auth_token=SoDkocw2aZ1Eqy2WyHex&note[content]=test api&note[user_id]=1&note[community_id]=1&upload=@/Users/liuqi/Pictures/IMG_1515.PNG;type=image/jpg" http://localhost:3000/notes.json 

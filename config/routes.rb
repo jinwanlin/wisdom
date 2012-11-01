@@ -1,8 +1,9 @@
 Wisdom::Application.routes.draw do
 
-  get "users/index"
-
+  resources :accounts, :controller => "users"
+  
   resources :notes
+  get '/photos' => 'notes#photos'
 
   resources :communities
 
