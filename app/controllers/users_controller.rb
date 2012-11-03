@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!
+  # skip_before_filter :verify_authenticity_token
+  
   def index
     @users = User
     @users = @users.where(:community_id => params[:community_id]) if params[:community_id].present?
@@ -21,5 +24,27 @@ class UsersController < ApplicationController
     
   end
   
+  def login
+    account_type = params[:account_type]
+    account_id = params[:account_id]
+    avatar = params[:avatar]
+    name = params[:name]
+    
+    if account_type == "sina"
+      @user = User.find_by_sina_id(account_id) if account_id.present?
+      @user ||= User.create(:email=> account_id << "@example.com", :password => "111111", 
+                            :sina_id => account_id, :name => name, :avatar => avatar)
+    end
+    respond_to do |format|
+      format.json {
+        unless @user.nil?
+          render json: @user
+        else
+          render :text => "error".to_json, :status => 401
+        end
+      }
+    end
+    
+  end
   
 end

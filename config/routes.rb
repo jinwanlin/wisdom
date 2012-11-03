@@ -2,6 +2,8 @@ Wisdom::Application.routes.draw do
 
   resources :accounts, :controller => "users"
   
+  post '/login' => 'users#login'
+  
   resources :notes
   get '/photos' => 'notes#photos'
 

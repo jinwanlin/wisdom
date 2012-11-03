@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_filter :authenticate_user!
-  skip_before_filter :verify_authenticity_token
+  # skip_before_filter :verify_authenticity_token
   # before_filter :parse_json_params, :if => "params[:format] == 'json'"
   
   # GET /notes
@@ -32,10 +32,13 @@ class NotesController < ApplicationController
   # GET /notes/1.json
   def show
     @note = Note.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @note }
+      format.json { 
+        # render :text => @note.as_json(:include => {:comments => {:only => [:id]} })
+        render json: @note
+      }
     end
   end
 

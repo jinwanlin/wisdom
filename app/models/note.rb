@@ -3,13 +3,16 @@ class Note < ActiveRecord::Base
   validates_presence_of :content
   
   belongs_to :user
-  has_many :comments, :foreign_key => "parent_id", :class_name => "Note"
+  has_many :comments, :foreign_key => "parent_id"
+  
   belongs_to :community
   
   has_many :attachments
   
   def as_json(options={})
-    super(:only => [:id, :user_id, :community_id, :content, :created_at], :methods => [:image])
+    super(:only => [:id, :user_id, :community_id, :content, :created_at], 
+          :include => {:comments => {:only => [:id, :user_id, :community_id, :content, :created_at]}},
+          :methods => [:image])
   end
   
   def image
