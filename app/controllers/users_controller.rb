@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+#  before_filter :authenticate_user!
   # skip_before_filter :verify_authenticity_token
   
   def index
@@ -32,8 +32,8 @@ class UsersController < ApplicationController
     
     if account_type == "sina"
       @user = User.find_by_sina_id(account_id) if account_id.present?
-      @user ||= User.create(:email=> account_id << "@example.com", :password => "111111", 
-                            :sina_id => account_id, :name => name, :avatar => avatar)
+      @user ||= User.create!(:sina_id => account_id, :email=> account_id + "@example.com", :password => "111111", 
+                            :name => name, :avatar => avatar)
     end
     respond_to do |format|
       format.json {

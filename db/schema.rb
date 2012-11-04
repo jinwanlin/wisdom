@@ -11,16 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103002310) do
+ActiveRecord::Schema.define(:version => 20121104033815) do
 
   create_table "attachments", :force => true do |t|
-    t.integer  "note_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "source_file_name"
     t.string   "source_content_type"
     t.integer  "source_file_size"
     t.datetime "source_updated_at"
+    t.integer  "owner_id"
+    t.string   "owner_type"
   end
 
   create_table "communities", :force => true do |t|
@@ -85,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20121103002310) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "avatar"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

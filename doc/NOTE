@@ -2,5 +2,43 @@
 # create note
 curl -d "auth_token=SoDkocw2aZ1Eqy2WyHex&note[content]=test api&note[user_id]=1&note[community_id]=1" http://localhost:3000/notes.json
 
-#can't use
-curl -d -F "auth_token=SoDkocw2aZ1Eqy2WyHex&note[content]=test api&note[user_id]=1&note[community_id]=1&upload=@/Users/liuqi/Pictures/IMG_1515.PNG;type=image/jpg" http://localhost:3000/notes.json 
+model:
+	second:
+		title:string
+		owner:string
+		price:float
+		views:integer
+		rate:string
+		desc:string
+		has_many:attachments
+	servicemerchant:
+		service_type:string	#搬家公司，钟点工，家电维修，月嫂服务
+		name:string
+		contact:string
+		position:integer #置顶位置
+		title:string
+		desc:string
+		v_type:string #认证类型：企业认证，个人认证
+		has_many:attachments
+	nearmerchant:
+		service_type:string	#全部，购物，美食，银行，休闲娱乐
+		name:string
+		contact:string
+		title:string
+		desc:string
+		has_many:attachments
+	hotline:
+		all static
+--medical---------------------------------------------		
+	hospital:
+	
+	communityhealth:
+	
+	doctor:
+	
+	healthbase:	
+		
+		
+		
+		
+		

@@ -1,7 +1,7 @@
 class Attachment < ActiveRecord::Base
-  attr_accessible :note_id, :source
+  attr_accessible :owner_id, :owner_type, :source
   
-  belongs_to :note
+  belongs_to :owner, :polymorphic => true
   
   has_attached_file :source, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   

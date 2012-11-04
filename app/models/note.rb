@@ -7,7 +7,7 @@ class Note < ActiveRecord::Base
   
   belongs_to :community
   
-  has_many :attachments
+  has_many :attachments, :as => :owner
   
   def as_json(options={})
     super(:only => [:id, :user_id, :community_id, :content, :children_count, :created_at], :methods => [:image])
