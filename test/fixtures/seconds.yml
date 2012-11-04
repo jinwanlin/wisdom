@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  owner: MyString
+  price: 1.5
+  views: 1
+  rate: MyString
+  desc: MyText
+
+two:
+  title: MyString
+  owner: MyString
+  price: 1.5
+  views: 1
+  rate: MyString
+  desc: MyText

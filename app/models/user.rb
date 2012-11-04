@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :notes
   
   def as_json(options={})
-    super(:only => [:id, :community_id, :sina_id, :email, :updated_at], :methods => [:auth_token])
+    super(:only => [:community_id, :name, :avatar])
   end
   
   def auth_token

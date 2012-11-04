@@ -1,0 +1,33 @@
+<h1>Listing seconds</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Owner</th>
+    <th>Price</th>
+    <th>Views</th>
+    <th>Rate</th>
+    <th>Desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @seconds.each do |second| %>
+  <tr>
+    <td><%= second.title %></td>
+    <td><%= second.owner %></td>
+    <td><%= second.price %></td>
+    <td><%= second.views %></td>
+    <td><%= second.rate %></td>
+    <td><%= second.desc %></td>
+    <td><%= link_to 'Show', second %></td>
+    <td><%= link_to 'Edit', edit_second_path(second) %></td>
+    <td><%= link_to 'Destroy', second, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Second', new_second_path %>

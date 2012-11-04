@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  app_type: MyString
+  service_type: MyString
+  name: MyString
+  title: MyString
+  contact: MyString
+  position: 1
+  location: MyString
+  desc: MyString
+  v_type: MyString
+
+two:
+  app_type: MyString
+  service_type: MyString
+  name: MyString
+  title: MyString
+  contact: MyString
+  position: 1
+  location: MyString
+  desc: MyString
+  v_type: MyString

@@ -27,7 +27,10 @@ class NotesController < ApplicationController
   
   def photos
     @photos = Attachment
-    @photos = @photos.where("notes.community_id = ?", params[:community_id]).joins(:notes) if params[:community_id].present?
+    @photos = @photos.where("notes.community_id = ?", params[:community_id])
+                      .joins("JOIN notes ON notes.id = attachments.owner_id AND attachments.owner_type = 'Note'") if params[:community_id].present?
+    
+    
     @photos = @photos.where("updated_at > ?", Time.parse(params[:timestamp])) if params[:timestamp].present?
     @photos = @photos.order("updated_at ASC").paginate :page => params[:page], :per_page => params[:per_page]
     
@@ -83,7 +86,7 @@ class NotesController < ApplicationController
         }
       else
         format.html { render action: "new" }
-        format.json { render :text => "error", :status => 401 }
+        format.json { render json: {:error => "error"}, :status => 401 }
       end
     end
   end

@@ -1,5 +1,13 @@
 Wisdom::Application.routes.draw do
 
+  get "hotline/index"
+
+  get "hotline/list"
+
+  resources :merchants
+
+  resources :seconds
+
   resources :accounts, :controller => "users"
   
   post '/login' => 'users#login'

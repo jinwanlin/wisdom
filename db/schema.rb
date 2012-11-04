@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121104033815) do
+ActiveRecord::Schema.define(:version => 20121104050256) do
 
   create_table "attachments", :force => true do |t|
     t.datetime "created_at",          :null => false
@@ -31,6 +31,21 @@ ActiveRecord::Schema.define(:version => 20121104033815) do
     t.string   "score"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "merchants", :force => true do |t|
+    t.string   "app_type"
+    t.string   "service_type"
+    t.string   "name"
+    t.string   "title"
+    t.string   "business_hours"
+    t.string   "contact"
+    t.integer  "position"
+    t.string   "location"
+    t.string   "desc"
+    t.string   "v_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "news", :force => true do |t|
@@ -57,6 +72,18 @@ ActiveRecord::Schema.define(:version => 20121104033815) do
 
   add_index "notes", ["user_id"], :name => "index_notes_on_user_id"
 
+  create_table "seconds", :force => true do |t|
+    t.string   "title"
+    t.string   "owner"
+    t.float    "price"
+    t.integer  "views"
+    t.string   "rate"
+    t.string   "contact"
+    t.text     "desc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "user_communities", :force => true do |t|
     t.integer  "user_id"
     t.integer  "community_id"
@@ -82,10 +109,6 @@ ActiveRecord::Schema.define(:version => 20121104033815) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.integer  "community_id"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
     t.string   "avatar"
   end
 

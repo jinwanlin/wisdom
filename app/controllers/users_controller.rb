@@ -1,26 +1,29 @@
 class UsersController < ApplicationController
-#  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:login]
   # skip_before_filter :verify_authenticity_token
   
   def index
     @users = User
     @users = @users.where(:community_id => params[:community_id]) if params[:community_id].present?
     @users = @users.where("updated_at > ?", Time.parse(params[:timestamp])) if params[:timestamp].present?
-    @users = @users.order("updated_at ASC")
+    @users = @users.order("updated_at ASC").paginate :page => params[:page], :per_page => params[:per_page]
+    
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @users }
+      format.json { render json: to_json_with_pagination(@users) }
     end
   end
   
   def update
-    @user = User.find params[:id]
+    # puts request.format == :json
+    @user = User.find_by_authentication_token params[:auth_token]
     if @user.update_attributes params[:user]
-      render json: @user
+      render json: { :community_id => @user.community_id }
     else
       render :status => 401
     end
+    
     
   end
   
@@ -38,7 +41,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.json {
         unless @user.nil?
-          render json: @user
+          render json: { :account_type => account_type, :account_id => account_id, :community_id => @user.community_id, :auth_token => @user.auth_token }
         else
           render :text => "error".to_json, :status => 401
         end
