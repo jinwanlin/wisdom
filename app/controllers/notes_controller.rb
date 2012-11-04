@@ -7,7 +7,13 @@ class NotesController < ApplicationController
   # GET /notes.json
   def index
     @notes = Note
-    @notes = @notes.where(:parent_id => params[:parent_id]) if params[:parent_id].present?
+    
+    if params[:parent_id].present?
+      @notes = @notes.where(:parent_id => params[:parent_id])
+    else
+      @notes = @notes.where(:parent_id => nil)
+    end
+    
     @notes = @notes.where(:community_id => params[:community_id]) if params[:community_id].present?
     @notes = @notes.where("updated_at < ?", Time.parse(params[:time_begin])) if params[:time_begin].present?
     @notes = @notes.where("updated_at > ?", Time.parse(params[:time_end])) if params[:time_end].present?
@@ -36,7 +42,7 @@ class NotesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { 
-        # render :text => @note.as_json(:include => {:comments => {:only => [:id]} })
+        # render :text => @note.as_json(:include => {:comments => {:only => [:id, :user_id, :community_id, :content, :created_at]}})
         render json: @note
       }
     end

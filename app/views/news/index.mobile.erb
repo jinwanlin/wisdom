@@ -1,0 +1,12 @@
+<%= content_for :title do %>
+	新闻
+<% end %>
+<ul>
+	<% @news.each do |news| %>
+    <li class="arrow">
+      <%= link_to news.title, "" %>
+    </li>
+  <% end %>
+</ul>
+
+<ul><li class="arrow"><%= link_to "create News", "" %></li></ul>
