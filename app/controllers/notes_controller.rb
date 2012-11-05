@@ -71,7 +71,9 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(params[:note])
-    
+    if params[:auth_token].present?
+      @note.user = User.find_by_authentication_token params[:auth_token]
+    end
     # user
     # params[:note][:user_id] = current_user.id if params[:note][:user_id].blank?
     

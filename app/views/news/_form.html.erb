@@ -1,20 +1,11 @@
 <div style="padding: 0px 68px; ">
 <%= simple_form_for(@news, :html => { :multipart => true }) do |f| %>
-  <% if @news.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
 
-      <ul>
-      <% @news.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 	<div class="form-inputs">
 		<%= f.input :title, :required => true, :label => '标题' %>
 		<%= f.input :content, :input_html => {:class => 'content'}, :label => '内容' %>
-		<%= f.input :cover, :label => '图片' %>
+		<%= file_field_tag :attachment %>
+		
 	</div>
 	<div class="form-actions">
 		<%= f.button :submit, {:class => "btn btn-primary"} %>

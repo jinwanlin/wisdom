@@ -2,11 +2,11 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.json
   def index
-    @news = News.page(params[:page])
+    @news = News.where('').order('created_at DESC').paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @news }
+      format.json { render json: to_json_with_pagination(@news) }
     end
   end
 
@@ -41,6 +41,8 @@ class NewsController < ApplicationController
   # POST /news.json
   def create
     @news = News.new(params[:news])
+    
+    @news.attachments << Attachment.new(:source => params[:attachment]) unless params[:attachment].blank?
 
     respond_to do |format|
       if @news.save

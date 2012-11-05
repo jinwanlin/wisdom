@@ -1,16 +1,16 @@
 class News < ActiveRecord::Base
-  attr_accessible :content, :title, :cover
+  attr_accessible :content, :title, :attachment
   
-  has_attached_file :cover, :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                            :default_url => "/assets/default.jpeg"
-  
-  self.per_page = 18
+  has_many :attachments, :as => :owner
   
   def as_json(options={})
     super(:only => [:id, :title, :content, :created_at], :methods => [:image])
   end
+
   
   def image
-    Settings.base_url + self.cover.url
+    if self.attachments.present?
+      Settings.base_url + self.attachments.first.source.url
+    end
   end
 end

@@ -10,11 +10,11 @@
   <%= @news.content %>
 </p>
 <p>
-	url: <%= link_to "image", @url %>
+	url: <%= link_to "image", @news.attachments.first.source.url if @news.attachments.present? %>
 </p>
 <p>
   <b>cover:</b>
-  <%= image_tag @news.cover.url %>
+  <%= image_tag @news.attachments.first.source.url if @news.attachments.present? %>
 </p>
 
 <%= link_to 'Edit', edit_news_path(@news) %> |

@@ -52,6 +52,7 @@
 						<%= yield :header %>
 					</div>
 					<div class="main">
+						<%#= request.user_agent %>
 						<%= yield %>
 					</div>
 				</div>
@@ -66,14 +67,14 @@
 						<%= nav_to "小区管理", communities_path, 'communities' %>
 						<%= nav_to "微博管理", notes_path, 'notes' %>
 						<li class="nav-header">便民</li>
-						<%= nav_to "二手物品管理", notes_path, 'seconds' %>
+						<%= nav_to "二手物品管理", seconds_path, 'seconds' %>
 						<%= nav_to "社区商家管理", notes_path, 'merchants' %>
-						<%= nav_to "周边商户管理", notes_path, 'merchants' %>
+						<%= nav_to "周边商户管理", notes_path, @postion %>
 						<li class="nav-header">医疗</li>
-						<%= nav_to "医院信息管理", notes_path, 'notes' %>
-						<%= nav_to "社区卫生服务站管理", notes_path, 'notes' %>
-						<%= nav_to "专家信息管理", notes_path, 'notes' %>
-						<%= nav_to "健康知识库管理", notes_path, 'notes' %>
+						<%= nav_to "医院信息管理", notes_path, 'medical' %>
+						<%= nav_to "社区卫生服务站管理", notes_path, 'medical' %>
+						<%= nav_to "专家信息管理", notes_path, 'medical' %>
+						<%= nav_to "健康知识库管理", notes_path, 'medical' %>
 					</ul>
 				</div>
 	    </div>

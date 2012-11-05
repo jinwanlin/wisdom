@@ -11,17 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121104050256) do
+ActiveRecord::Schema.define(:version => 20121105052455) do
 
   create_table "attachments", :force => true do |t|
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "owner_id"
+    t.string   "owner_type"
     t.string   "source_file_name"
     t.string   "source_content_type"
     t.integer  "source_file_size"
     t.datetime "source_updated_at"
-    t.integer  "owner_id"
-    t.string   "owner_type"
   end
 
   create_table "communities", :force => true do |t|
@@ -51,12 +51,8 @@ ActiveRecord::Schema.define(:version => 20121104050256) do
   create_table "news", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
-    t.integer  "cover_file_size"
-    t.datetime "cover_updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "notes", :force => true do |t|

@@ -1,6 +1,6 @@
 module ApplicationHelper
   def nav_to(name ,path, active=nil)
-    if active == params[:controller]
+    if active == params[:controller] || active == "near-merchants"
       content_tag(:li, (link_to name, path), :class => "active")
     else
       content_tag(:li, (link_to name, path))

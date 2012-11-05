@@ -6,8 +6,7 @@ class Attachment < ActiveRecord::Base
   has_attached_file :source, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
   def as_json(options={})
-    # super(:only => [:id, :source_file_name, :created_at], :methods => [:thumb_url, :origin_url])
-    super(:only => [:id])
+    super(:only => [:id, :source_file_name, :created_at], :methods => [:thumb_url, :origin_url])
   end
   
   def thumb_url

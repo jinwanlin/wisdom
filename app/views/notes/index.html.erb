@@ -1,5 +1,5 @@
 <% content_for :header do -%>
-	<h3>微博列表 - <%= link_to 'json format', notes_path(:json) %></h3>
+	<h3>微博列表</h3>
 <% end -%>
 
 <table class="table table-hover">
@@ -10,18 +10,16 @@
     <th>创建时间</th>
     <th></th>		
     <th></th>
-    <th>↓</th>
   </tr>
 
 <% @notes.each do |note| %>
   <tr>
-    <td><%= note.content %></td>
-    <td><%= note.user.email rescue "" %></td>
+    <td><%= note.content.truncate(30) %></td>
+    <td><%= note.user.name rescue "" %></td>
     <td><%= note.community.name rescue "" %></td>
 		<td><%= l note.created_at %></td>
     <td><%= link_to 'Show', note %></td>
     <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		<td><%= link_to 'json', note_path(note, :json) %></td>
   </tr>
 <% end %>
 </table>
