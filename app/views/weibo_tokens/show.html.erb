@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Token:</b>
+  <%= @weibo_token.token %>
+</p>
+
+<p>
+  <b>Account:</b>
+  <%= @weibo_token.account_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_weibo_token_path(@weibo_token) %> |
+<%= link_to 'Back', weibo_tokens_path %>

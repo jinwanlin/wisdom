@@ -1,0 +1,20 @@
+<div style="padding: 0px 68px; ">
+	<%= simple_form_for(@coupon, html: {multipart: true}) do |f| %>
+	  <%= f.error_notification %>
+
+	  <div class="form-inputs">
+	    <%= f.input :merchant_name %>
+	    <%= f.input :title %>
+	    <%= f.input :expire %>
+			<%= f.input :merchant_contact %>
+			<%= f.input :merchant_address %>
+			<%= file_field_tag :attachment %>
+			<%= f.input :desc, :input_html => {class: "content"} %>
+	  </div>
+
+	  <div class="form-actions">
+	    <%= f.button :submit, {:class => "btn btn-primary"} %>
+			<%= link_to 'Back', coupons_path, {:class => "btn"} %>
+	  </div>
+	<% end %>
+</div>

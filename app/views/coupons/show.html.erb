@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @coupon.merchant_name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @coupon.title %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @coupon.desc %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @coupon.merchant_contact %>
+</p>
+
+<p>
+	<b>Address:</b>
+  <%= @coupon.merchant_address %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= image_tag @coupon.attachments.first.source.url unless @coupon.attachments.empty? %>
+</p>
+
+
+<%= link_to 'Edit', edit_coupon_path(@coupon) %> |
+<%= link_to 'Back', coupons_path %>

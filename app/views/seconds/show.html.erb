@@ -21,8 +21,8 @@
 </p>
 
 <p>
-  <b>Rate:</b>
-  <%= @second.rate %>
+  <b>Contact:</b>
+  <%= @second.contact %>
 </p>
 
 <p>
@@ -30,6 +30,10 @@
   <%= @second.desc %>
 </p>
 
+<p>
+	<b>Image:</b>
+	<%= image_tag @second.attachments.first.source.url unless @second.attachments.blank? %>
+</p>
 
 <%= link_to 'Edit', edit_second_path(@second) %> |
 <%= link_to 'Back', seconds_path %>

@@ -1,14 +1,16 @@
-<%= simple_form_for(@community) do |f| %>
-  <%= f.error_notification %>
+<div style="padding: 0px 68px; ">
+	<%= simple_form_for(@community) do |f| %>
+	  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :location %>
-    <%= f.input :desc %>
-    <%= f.input :score %>
-  </div>
+	  <div class="form-inputs">
+	    <%= f.input :name, :required => true %>
+	    <%= f.input :location %>
+			<%= f.input :desc, :as => "text", :input_html => {:class => 'content'} %>
+	  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+	  <div class="form-actions">
+	    <%= f.button :submit, {:class => "btn btn-primary"} %>
+			<%= link_to 'Back', communities_path, {:class => "btn"} %>
+	  </div>
+	<% end %>
+</div>

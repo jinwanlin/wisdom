@@ -1,11 +1,12 @@
-<h1>Listing communities</h1>
+<% content_for :header do -%>
+	<h3>小区列表</h3>
+<% end -%>
 
 <table class="table table-hover">
   <tr>
     <th>Name</th>
     <th>Location</th>
     <th>Desc</th>
-    <th>Score</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,7 +17,6 @@
     <td><%= community.name %></td>
     <td><%= community.location %></td>
     <td><%= community.desc %></td>
-    <td><%= community.score %></td>
     <td><%= link_to 'Show', community %></td>
     <td><%= link_to 'Edit', edit_community_path(community) %></td>
     <td><%= link_to 'Destroy', community, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +26,4 @@
 
 <br />
 
-<%= link_to 'Create Community', new_community_path, {:class => "btn"} %>
+<%= link_to '创建小区', new_community_path, {:class => "btn"} %>

@@ -1,7 +1,7 @@
 class News < ActiveRecord::Base
   attr_accessible :content, :title, :attachment
   
-  has_many :attachments, :as => :owner
+  has_many :attachments, :as => :owner, :dependent => :destroy
   
   def as_json(options={})
     super(:only => [:id, :title, :content, :created_at], :methods => [:image])

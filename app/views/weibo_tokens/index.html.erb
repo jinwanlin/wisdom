@@ -1,0 +1,26 @@
+<% content_for :header do -%>
+	<h3>token列表</h3>
+<% end -%>
+<table class="table table-hover">
+  <tr>
+    <th>Token</th>
+    <th>Account</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @weibo_tokens.each do |weibo_token| %>
+  <tr>
+    <td><%= weibo_token.token %></td>
+    <td><%= weibo_token.account_id %></td>
+    <td><%= link_to 'Show', weibo_token %></td>
+    <td><%= link_to 'Edit', edit_weibo_token_path(weibo_token) %></td>
+    <td><%= link_to 'Destroy', weibo_token, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Create Weibo token', new_weibo_token_path, {:class => 'btn'} %>

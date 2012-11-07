@@ -49,8 +49,8 @@ gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'devise'
 
 # Use unicorn as the web server
-gem 'unicorn'
-gem "unicorn-rails"
+# gem 'unicorn'
+# gem "unicorn-rails"
 
 
 

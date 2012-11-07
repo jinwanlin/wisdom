@@ -1,9 +1,15 @@
 Wisdom::Application.routes.draw do
+  
+  resources :coupons
+
+  get "/get_token" => 'weibo_tokens#show'
+
+  resources :weibo_tokens
 
   get "hotline/index"
 
   get "hotline/list"
-
+  
   resources :merchants
 
   resources :seconds

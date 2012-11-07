@@ -42,6 +42,9 @@ class SecondsController < ApplicationController
   def create
     @second = Second.new(params[:second])
 
+    #add attachment
+    @second.attachments << Attachment.new(:source => params[:attachment]) unless params[:attachment].blank?
+
     respond_to do |format|
       if @second.save
         format.html { redirect_to @second, notice: 'Second was successfully created.' }
