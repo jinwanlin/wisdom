@@ -5,8 +5,6 @@ class Merchant < ActiveRecord::Base
   
   has_many :attachments, :as => :owner
   
-  HOME_SERVICE_TYPE = %w("搬家公司", "保洁清洗", "家电维修", "月嫂服务", "生活配送", "鲜花速递", "洗衣店")
-  
   NEAR_SERVICE_TYPE = %w("美食", "休闲娱乐", "酒店", "银行", 加油站", "医院", "商场", "超市")
   
   

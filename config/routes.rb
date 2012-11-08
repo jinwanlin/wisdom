@@ -1,5 +1,7 @@
 Wisdom::Application.routes.draw do
   
+  resources :houses
+
   resources :coupons
 
   get "/get_token" => 'weibo_tokens#show'

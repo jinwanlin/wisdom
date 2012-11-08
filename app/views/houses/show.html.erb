@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @house.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @house.title %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @house.contact %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @house.desc %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @house.location %>
+</p>
+
+<p>
+  <b>Service type:</b>
+  <%= @house.service_type %>
+</p>
+
+<p>
+  <b>V type:</b>
+  <%= @house.v_type %>
+</p>
+
+<p>
+	<b>Image:</b>
+	<% @house.attachments.each do |attachment| %>
+		<%= image_tag attachment.source.url(:thumb) %>
+	<% end  %>
+	
+</p>
+
+
+<%= link_to 'Edit', edit_house_path(@house) %> |
+<%= link_to 'Back', houses_path %>
+
+
+
+
+
+

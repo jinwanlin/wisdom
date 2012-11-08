@@ -1,0 +1,39 @@
+<% content_for :header do %>
+	<h3>家政服务商列表</h3>
+<% end %>
+
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Contact</th>
+    <th>Desc</th>
+    <th>Location</th>
+    <th>Service type</th>
+    <th>V type</th>
+    <th>Cover</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @houses.each do |house| %>
+  <tr>
+    <td><%= house.name %></td>
+    <td><%= house.title.truncate(20) %></td>
+    <td><%= house.contact %></td>
+    <td><%= house.desc.truncate(20) %></td>
+    <td><%= house.location %></td>
+    <td><%= house.service_type %></td>
+    <td><%= house.v_type %></td>
+    <td><%= house.cover %></td>
+    <td><%= link_to 'Show', house %></td>
+    <td><%= link_to 'Edit', edit_house_path(house) %></td>
+    <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Create House', new_house_path, {:class => "btn"} %>

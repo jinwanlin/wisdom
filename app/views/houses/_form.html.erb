@@ -1,0 +1,32 @@
+<script type="text/javascript" charset="utf-8">
+	function add_file() {
+		$("#addfile").append('<%= file_field_tag "attachments[]" %><br/>');
+	}
+</script>
+
+<div style="padding: 0px 68px; ">
+	<%= simple_form_for(@house, html:{multipart: true}) do |f| %>
+	  <%= f.error_notification %>
+
+	  <div class="form-inputs">
+	    <%= f.input :name %>
+	    <%= f.input :title %>
+	    <%= f.input :contact %>
+	    <%= f.input :location %>
+	    <%= f.input :service_type, :collection => House::SERVICE_TYPE, :prompt => '请选择服务类型' %>
+	    <%= f.input :v_type %>
+	    <%= f.input :desc, :input_html => {:class => 'content'} %>
+			<div id="addfile">
+				<%= file_field_tag "attachments[]" %><br/>
+			</div>
+			
+			<input type='button' value="add file" onclick="add_file();">
+			
+	  </div>
+
+	  <div class="form-actions">
+	    <%= f.button :submit, {:class => 'btn btn-primary'} %>
+			<%= link_to "Back", houses_path, {:class => 'btn'} %>
+	  </div>
+	<% end %>
+</div>
