@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>二手商品--详细</title>
+	<meta content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0" name="viewport"/>
+	<meta content="240" name="MobileOptimized"/>
+	<%= javascript_include_tag "application" %>
+  
+	<style type="text/css">
+		body,img {
+			margin: 0;
+			padding: 0;
+		}
+		
+		a:link,a:visited {
+			text-decoration: none;
+		}
+		
+		body {
+			width: 96%;
+			margin: 2%;
+			text-align: left;
+			background-color: #f8f8f8;
+		}
+		
+		.title {
+			font-size: 24px;
+			font-weight: 600;
+			text-align: center;
+			line-height: 50px;
+		}
+		
+		.create_date {
+			float: right;
+			margin-right: 10px;
+			line-height: 24px;
+			font-size: 14px;
+			color: #333;
+		}
+		.logo {
+			position: relative;
+			width: 92%;
+			margin: 4%;
+		}
+		.center, .top, .middle, .bottom{
+			border:1px solid #e0e1e3;
+			background-color: #fff;
+		}
+		.center{
+			border-radius: 0 8px 8px 0;
+			background-color: #fff;
+		}
+		.top, .middle, .bottom{
+			height: 50px;
+			padding: 5px;
+			margin-top: 10px;
+			text-align: center;
+		}
+		.top{
+			border-radius: 8px 0 0 8px;
+			width: 73px;
+			position: absolute;
+			border-right: white;
+		}
+		.middle, .bottom{
+			border-radius: 8px;
+			width: 65px;
+		}
+		.lable{
+			color: #666;
+			line-height: 24px;
+			
+		}
+		.cont{
+			line-height: 24px;
+			color: #000;
+		}
+		.address, .desc{
+			margin: 10px 5px;
+			line-height: 24px;
+		}
+		.address>div, .desc>div{
+			line-height: 24px;
+		}
+		.content{
+			text-indent: 2em;
+		}
+		
+</style>
+	
+	
+ </head>
+
+ <body>
+	<div class="title"><%= @second.title %></div>
+	<div style="height: 24px;">
+		<div class="create_date">发布时间：<%= l(@second.created_at, format: :short) %></div>
+	</div>
+	
+	<table style="width:100%" class="header">
+		<tr  style="width:100%" >
+			<td style="width:80px;" valign="top">
+				<div style="height:71px;">
+					<div class="top">
+						<div class="lable">价格</div>
+						<div class="cont"><%= @second.price %></div>
+					</div>
+				</div>
+				<div class="middle">
+					<div class="lable">卖家</div>
+					<div class="cont"><%= @second.owner %></div>
+				</div>
+				<div class="bottom">
+					<div class="lable">浏览人数</div>
+					<div class="cont"><%= @second.views %></div>
+				</div>
+			</td>
+			<td class="center">
+				<%= image_tag @second.attachments.first.source.url(:medium), class: 'logo' if @second.attachments.present? %>
+			</td>
+		</tr>
+	</table>
+	
+	
+	<div class="desc">
+		<span style="color: #3572a5;">描述：</span>
+		<span class="content">
+			<%= @second.desc %>
+		</span>
+		<div class="header">
+		</div>
+	</div>
+	<div class="address">
+		<span style="color: #3572a5;">联系方式：</span>
+		<span class="content">
+			<%= @second.contact %>
+		</span>
+	</div>
+</body>
+</html>

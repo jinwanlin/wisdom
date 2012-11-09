@@ -8,14 +8,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :community_name %>
-    <%= f.input :location %>
-    <%= f.input :essence %>
-    <%= f.input :desc %>
-    <%= f.input :contact %>
-    <%= f.input :workingtime %>
-    <%= f.input :openoffice %>
+    <%= f.input :name, label: "名称" %>
+    <%= f.input :community_name, label: "所属社区" %>
+    <%= f.input :location, label: "地址" %>
+    <%= f.input :essence, label: "性质" %>
+    <%= f.input :contact, label: "联系方式" %>
+    <%= f.input :workingtime, label: "营业时间" %>
+    <%= f.input :openoffice, label: "开放科室" %>
+		<%= f.input :desc, label: "介绍", as: 'text', input_html:{class: 'content'} %>
 
 		<div id="addfile">
 			<%= file_field_tag "attachments[]" %><br/>

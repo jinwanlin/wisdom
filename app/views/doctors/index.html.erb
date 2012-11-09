@@ -26,8 +26,8 @@
     <td><%= doctor.age %></td>
     <td><%= doctor.hostpital %></td>
     <td><%= doctor.office %></td>
-    <td><%= doctor.major %></td>
-    <td><%= doctor.desc %></td>
+    <td><%= doctor.major.truncate(20) %></td>
+    <td><%= doctor.desc.truncate(30) %></td>
     <td><%= doctor.out_call %></td>
     <td><%= link_to 'Show', doctor %></td>
     <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>

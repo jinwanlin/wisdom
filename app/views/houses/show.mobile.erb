@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>
+			家政--详细
+		</title>
+		<meta content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0" name="viewport">
+		<meta content="240" name="MobileOptimized">
+		<style type="text/css">
+body,  img{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #f8f8f8;
+		}
+		a:link{
+			text-decoration:none;
+		}
+		a{
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+		}
+
+		.contener{
+			margin: 2%;
+		}
+		.title {
+			font-size: 24px;
+			text-align: center;
+			line-height: 50px;
+		}
+		.logo{
+			margin: 2%;
+			padding:2%;
+			border: 1px solid #E0E1E3;
+			border-radius:8px;
+		}
+		.logo img{
+			width: 100%;
+		}
+
+		body{
+			width: 100%;
+			text-align: left;
+		}
+
+		.desc{
+			text-indent: 2em;
+		}
+		dt{
+			color: #3572a5;
+			font-weight: 700;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="contener">
+			<div class="logo">
+				<%= image_tag @house.attachments.first.source.url(:medium) if @house.attachments.present? %>
+			</div>
+			<div class="title">
+				<%= @house.title %>
+			</div>
+			<hr>
+			<dl>
+				<dt>
+					地址：
+				</dt>
+				<dd>
+					<%= @house.location %>
+				</dd>
+				<dt>
+					电话：
+				</dt>
+				<dd>
+					<%= @house.contact %>
+				</dd>
+				<dt>
+					服务介绍：
+				</dt>
+				<dd>
+					<%= @house.desc %>
+				</dd>
+			</dl>
+			<% if @house.attachments.size > 1 %>
+				<% @house.attachments[1..-1].each do |attachment| %>
+					<div class="logo">
+						<%= image_tag attachment.source.url(:medium) %>
+					</div>
+				<% end %>
+			<% end %>
+			
+		</div>
+	</body>
+</html>

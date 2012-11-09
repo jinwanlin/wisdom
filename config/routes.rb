@@ -18,11 +18,20 @@ Wisdom::Application.routes.draw do
 
   resources :weibo_tokens
 
-  get "hotline/index"
-
-  get "hotline/list"
+  resources :hotline do 
+    collection do
+      get 'more'
+    end
+  end
   
-  resources :merchants
+
+  get "hotline/more"
+  
+  resources :merchants do
+    collection do
+      get 'near'
+    end
+  end
 
   resources :seconds
 

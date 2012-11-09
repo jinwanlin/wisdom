@@ -64,6 +64,12 @@ class CommunityHealthStationsController < ApplicationController
   def update
     @community_health_station = CommunityHealthStation.find(params[:id])
 
+    if params[:attachments]
+      params[:attachments].each do |attachment|
+        @hospital.attachments << Attachment.new(:source => attachment) unless attachment.blank?
+      end
+    end
+    
     respond_to do |format|
       if @community_health_station.update_attributes(params[:community_health_station])
         format.html { redirect_to @community_health_station, notice: 'Community health station was successfully updated.' }

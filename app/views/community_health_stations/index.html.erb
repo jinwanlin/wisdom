@@ -21,9 +21,9 @@
   <tr>
     <td><%= community_health_station.name %></td>
     <td><%= community_health_station.community_name %></td>
-    <td><%= community_health_station.location %></td>
+    <td><%= community_health_station.location.truncate(20) %></td>
     <td><%= community_health_station.essence %></td>
-    <td><%= community_health_station.desc %></td>
+    <td><%= community_health_station.desc.truncate(20) %></td>
     <td><%= community_health_station.contact %></td>
     <td><%= community_health_station.workingtime %></td>
     <td><%= community_health_station.openoffice %></td>

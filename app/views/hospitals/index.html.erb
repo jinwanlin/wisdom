@@ -20,9 +20,9 @@
 <% @hospitals.each do |hospital| %>
   <tr>
     <td><%= hospital.name %></td>
-    <td><%= hospital.location %></td>
+    <td><%= hospital.location.truncate(20) %></td>
     <td><%= hospital.essence %></td>
-    <td><%= hospital.desc %></td>
+    <td><%= hospital.desc.truncate(20) %></td>
     <td><%= hospital.contact %></td>
     <td><%= hospital.workingtime %></td>
     <td><%= hospital.openoffice %></td>

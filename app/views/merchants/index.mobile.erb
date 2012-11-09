@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+	<meta content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0" name="viewport"/>
+	<meta content="240" name="MobileOptimized"/>
+ <style type="text/css">
+	body, ul, li{
+		padding: 0;
+		margin: 0;
+	}
+	a:link {
+		text-decoration:none;
+		color:#000;
+	}
+	a{
+		-webkit-tap-highlight-color:rgba(0,0,0,0);
+		text-decoration:none;
+		color:#000;
+	}
+	body{
+		width: 100%;
+		background-color: #f5f5f5;
+	}
+	
+	li{
+		width: 94%;
+		height:80px;
+		margin: 10px 2%;
+		list-style: none;
+		padding-right:2%;
+		background: url("<%= asset_path 'around/bg_repeat.png' %>") 0 0 repeat-x;
+	}
+	
+	.logo{
+		float:left;
+		width:118px;
+		height: 80px;
+		overflow: hidden;
+	}
+	.title{
+		font-size: 18px;
+		line-height: 28px;
+		line-height: 50px;
+	}
+	
+	.address{
+		width: 150px;
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		font-size: 14px;
+		color: #666;
+	}
+/*	.juli{
+		float: right;
+		margin-top: -48px;
+		font-size: 14px;
+		color: red;
+	}*/
+	.img_border{
+		background: url("<%= asset_path 'around/bg_shopimg.png' %>") no-repeat scroll 0 0 transparent;
+		position:absolute;
+	    height: 80px;
+	    width: 118px;
+	    z-index: 2;
+	}
+</style>
+</head>
+<body>
+	<ul class="contacts">
+		<% @merchants.each do |merchant| %>
+			<li>
+					<a href="<%= merchant_path(merchant) %>">
+						<div class="logo">
+							<div class="img_border"></div>
+								<%= image_tag merchant.attachments.first.source.url(:thumb), class: 'im' if merchant.attachments.present? %>
+						</div>
+						<div class="name">
+							<div class="title"><%= merchant.title %></div>
+							<div class="address"><%= merchant.location %></div>
+							<!-- <div class="juli">500m</div> -->
+						</div>
+					</a>
+			</li>			
+		<% end %>
+
+		
+	
+		
+		
+	</ul>
+
+</body>
+</html>

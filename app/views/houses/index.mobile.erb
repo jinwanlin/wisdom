@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>家政--首页</title>
+	<meta content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0" name="viewport"/>
+	<meta content="240" name="MobileOptimized"/>
+  <%= javascript_include_tag "application" %>
+	
+	<style type="text/css">
+		body,  img{
+			margin: 0;
+			padding: 0;
+		}
+		a:link, a:visited{
+			text-decoration:none;
+			color:#000;
+		}
+		a{
+			outline:0;
+			width: 0;
+			height: 0;
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+			text-decoration:none;
+			color:#000;
+		}
+		
+		body{
+			width: 100%;
+			text-align: left;
+			padding: 15px 0;
+			background: url(<%= asset_path 'second-bg.png' %>) repeat #666;
+		}
+		img{
+			width: 46%;
+			position: absolute;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			border: 2px solid #fff;
+		}
+		.title{
+			position: absolute;
+			display: block;
+			width: 46%;
+			background-color: #fff;
+			z-index: 99;
+			text-decoration: none;
+			margin-top: 1px;
+			alpha(opacity=50);
+			opacity: 0.5;
+		}
+		.name{
+			line-height: 24px;
+			height: 24px;
+			width: 58%;
+			color: #000;
+			overflow:hidden;
+			/* white-space:nowrap;
+			text-overflow:ellipsis; */
+			display: inline-block;
+			padding-left: 4px;
+			font-weight: 600;
+			float: left;
+			text-decoration:none;
+		}
+		.price{
+			line-height: 24px;
+			height: 24px;
+			color: red;
+			width: 38%;
+			display: inline-block;
+			text-align: right;
+			float: right;
+			padding-right: 3px;
+			text-decoration:none;
+			font-weight: 700;
+		}
+	</style>
+	
+	<script type="text/javascript">
+	function sleep(){
+		setTimeout("pai()",10); 
+	}
+	
+	function pai(){
+		var winW = $(window).width();//屏幕的宽度
+		var border_width = winW/100;
+		
+		
+		var h1 = 0;
+		var h2 = 0;
+		var images = $("img");
+		var titles = $(".title");
+		$.each(images,function(i, a) {
+			var height = a.height;
+			var n = $(a);
+			//var title = $(titles.get(i))
+			if(h1 <= h2){
+				n.css("top", h1+"px");
+				n.css("left", "2%");
+				h1 = parseInt(h1) + parseInt(height) + 10;
+				n.next().css("top", h1-24+border_width+"px");
+				n.next().css("left", border_width+winW/50);
+			}else{
+				n.css("top", h2+"px");
+				n.css("left", "51%");
+				h2 = parseInt(h2) + parseInt(height) + 10;
+				n.next().css("top", h2-24+border_width+"px");
+				n.next().css("left", winW/2+border_width+winW/100);
+			}
+			
+		});
+		
+		
+		images.css("border-width", border_width+"px");
+		
+	}
+	</script>
+ </head>
+
+ <body onload="sleep();">
+	
+	<% @houses.each do |house| %>
+		<a href="houses/<%= house.id %>">
+			<%= image_tag house.attachments.first.source.url(:medium), class: 'im' if house.attachments.present? %>
+			<span class="title"><%= house.title %></span>
+		</a>
+	<% end  %>
+	
+</body>
+</html>

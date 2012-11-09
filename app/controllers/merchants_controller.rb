@@ -2,7 +2,12 @@ class MerchantsController < ApplicationController
   # GET /merchants
   # GET /merchants.json
   def index
-    @merchants = Merchant.all
+    
+    @merchants = Merchant
+    if params[:type].present?
+      @merchants = @merchants.where(:service_type => params[:type])
+    end
+      @merchants = @merchants.order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,6 +47,12 @@ class MerchantsController < ApplicationController
   def create
     @merchant = Merchant.new(params[:merchant])
 
+    if params[:attachments]
+      params[:attachments].each do |attachment|
+        @merchant.attachments << Attachment.new(:source => attachment) unless attachment.blank?
+      end
+    end
+    
     respond_to do |format|
       if @merchant.save
         format.html { redirect_to @merchant, notice: 'Merchant was successfully created.' }
@@ -58,6 +69,12 @@ class MerchantsController < ApplicationController
   def update
     @merchant = Merchant.find(params[:id])
 
+    if params[:attachments]
+      params[:attachments].each do |attachment|
+        @merchant.attachments << Attachment.new(:source => attachment) unless attachment.blank?
+      end
+    end
+    
     respond_to do |format|
       if @merchant.update_attributes(params[:merchant])
         format.html { redirect_to @merchant, notice: 'Merchant was successfully updated.' }

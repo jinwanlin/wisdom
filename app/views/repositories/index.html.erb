@@ -18,7 +18,7 @@
   <tr>
     <td><%= repository.base_type %></td>
     <td><%= repository.title %></td>
-    <td><%= repository.content %></td>
+    <td><%= repository.content.truncate(30) %></td>
     <td><%= repository.content_url %></td>
     <td><%= repository.category %></td>
     <td><%= link_to 'Show', repository %></td>

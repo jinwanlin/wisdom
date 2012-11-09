@@ -64,6 +64,12 @@ class HospitalsController < ApplicationController
   def update
     @hospital = Hospital.find(params[:id])
 
+    if params[:attachments]
+      params[:attachments].each do |attachment|
+        @hospital.attachments << Attachment.new(:source => attachment) unless attachment.blank?
+      end
+    end
+    
     respond_to do |format|
       if @hospital.update_attributes(params[:hospital])
         format.html { redirect_to @hospital, notice: 'Hospital was successfully updated.' }

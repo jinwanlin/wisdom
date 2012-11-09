@@ -3,12 +3,12 @@
 	  <%= f.error_notification %>
 
 	  <div class="form-inputs">
-	    <%= f.input :title %>
-	    <%= f.input :owner %>
-	    <%= f.input :price %>
-	    <%= f.input :views %>
-	    <%= f.input :contact %>
-	    <%= f.input :desc, :as => "text", :input_html => {:class => 'content'} %>
+	    <%= f.input :title, label: "标题" %>
+	    <%= f.input :owner, label: "物主" %>
+	    <%= f.input :price, label: "价格" %>
+	    <%= f.input :views, label: "浏览人数" %>
+	    <%= f.input :contact, label: "联系方式" %>
+	    <%= f.input :desc, label: "描述", :as => "text", :input_html => {:class => 'content'} %>
 			<%= file_field_tag :attachment %>
 	  </div>
 
