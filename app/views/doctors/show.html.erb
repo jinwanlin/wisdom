@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @doctor.name %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @doctor.level %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%= @doctor.sex %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @doctor.age %>
+</p>
+
+<p>
+  <b>Hostpital:</b>
+  <%= @doctor.hostpital %>
+</p>
+
+<p>
+  <b>Office:</b>
+  <%= @doctor.office %>
+</p>
+
+<p>
+  <b>Major:</b>
+  <%= @doctor.major %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @doctor.desc %>
+</p>
+
+<p>
+  <b>Out call:</b>
+  <%= @doctor.out_call %>
+</p>
+
+<p>
+	<b>Image:</b>
+	<%= image_tag @doctor.attachments.first.source.url unless @doctor.attachments.blank? %>
+</p>
+
+<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+<%= link_to 'Back', doctors_path %>

@@ -1,5 +1,15 @@
 Wisdom::Application.routes.draw do
   
+  get "/get_zhengwu" => "repositories#get_zhengwu"
+  
+  resources :repositories
+
+  resources :doctors
+
+  resources :community_health_stations
+
+  resources :hospitals
+
   resources :houses
 
   resources :coupons

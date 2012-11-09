@@ -43,7 +43,6 @@ class HousesController < ApplicationController
     @house = House.new(params[:house])
     puts params[:attachments]
     
-    
     if params[:attachments]
       params[:attachments].each do |attachment|
         @house.attachments << Attachment.new(:source => attachment) unless attachment.blank?

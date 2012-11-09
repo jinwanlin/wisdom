@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  community_name: MyString
+  location: MyString
+  essence: MyString
+  desc: MyString
+  contact: MyString
+  workingtime: MyString
+  openoffice: MyString
+
+two:
+  name: MyString
+  community_name: MyString
+  location: MyString
+  essence: MyString
+  desc: MyString
+  contact: MyString
+  workingtime: MyString
+  openoffice: MyString

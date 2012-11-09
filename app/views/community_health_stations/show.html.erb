@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @community_health_station.name %>
+</p>
+
+<p>
+  <b>Community name:</b>
+  <%= @community_health_station.community_name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @community_health_station.location %>
+</p>
+
+<p>
+  <b>Essence:</b>
+  <%= @community_health_station.essence %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @community_health_station.desc %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @community_health_station.contact %>
+</p>
+
+<p>
+  <b>Workingtime:</b>
+  <%= @community_health_station.workingtime %>
+</p>
+
+<p>
+  <b>Openoffice:</b>
+  <%= @community_health_station.openoffice %>
+</p>
+
+<p>
+	<b>Image:</b>
+	<% @community_health_station.attachments.each do |attachment| %>
+		<%= image_tag attachment.source.url(:thumb) %>
+	<% end  %>
+</p>
+
+<%= link_to 'Edit', edit_community_health_station_path(@community_health_station) %> |
+<%= link_to 'Back', community_health_stations_path %>
+
+
+
+

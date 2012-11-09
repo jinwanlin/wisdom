@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107080840) do
+ActiveRecord::Schema.define(:version => 20121108030534) do
 
   create_table "attachments", :force => true do |t|
     t.datetime "created_at",          :null => false
@@ -33,6 +33,19 @@ ActiveRecord::Schema.define(:version => 20121107080840) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "community_health_stations", :force => true do |t|
+    t.string   "name"
+    t.string   "community_name"
+    t.string   "location"
+    t.string   "essence"
+    t.string   "desc"
+    t.string   "contact"
+    t.string   "workingtime"
+    t.string   "openoffice"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "coupons", :force => true do |t|
     t.string   "merchant_name"
     t.string   "merchant_contact"
@@ -44,6 +57,33 @@ ActiveRecord::Schema.define(:version => 20121107080840) do
     t.string   "cover"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "doctors", :force => true do |t|
+    t.string   "name"
+    t.string   "level"
+    t.string   "sex"
+    t.string   "age"
+    t.string   "hostpital"
+    t.string   "office"
+    t.string   "major"
+    t.string   "desc"
+    t.string   "out_call"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "hospitals", :force => true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "essence"
+    t.string   "desc"
+    t.string   "contact"
+    t.string   "workingtime"
+    t.string   "openoffice"
+    t.string   "level"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "houses", :force => true do |t|
@@ -93,6 +133,16 @@ ActiveRecord::Schema.define(:version => 20121107080840) do
   end
 
   add_index "notes", ["user_id"], :name => "index_notes_on_user_id"
+
+  create_table "repositories", :force => true do |t|
+    t.string   "base_type"
+    t.string   "title"
+    t.text     "content"
+    t.string   "content_url"
+    t.string   "category"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "seconds", :force => true do |t|
     t.string   "title"

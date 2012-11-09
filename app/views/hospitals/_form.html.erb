@@ -1,0 +1,32 @@
+<script type="text/javascript" charset="utf-8">
+	function add_file() {
+		$("#addfile").append('<%= file_field_tag "attachments[]" %><br/>');
+	}
+</script>
+
+<div style="padding: 0px 68px; ">
+	<%= simple_form_for(@hospital, html:{multipart: true}) do |f| %>
+	  <%= f.error_notification %>
+
+	  <div class="form-inputs">
+	    <%= f.input :name, label: "名称" %>
+	    <%= f.input :location, label: "地址" %>
+	    <%= f.input :essence, label: "医院性质" %>
+	    <%= f.input :desc, label: "介绍" %>
+	    <%= f.input :contact, label: "联系方式" %>
+	    <%= f.input :workingtime, label: "营业时间" %>
+	    <%= f.input :openoffice, label: "开放科室" %>
+	    <%= f.input :level, label: "医院等级" %>
+			
+			<div id="addfile">
+				<%= file_field_tag "attachments[]" %><br/>
+			</div>
+			<input type='button' value="add file" onclick="add_file();" class="btn btn-info" >
+	  </div>
+
+	  <div class="form-actions">
+	    <%= f.button :submit, {:class => "btn btn-primary"} %>
+			<%= link_to 'Back', hospitals_path, {:class => "btn"} %>
+	  </div>
+	<% end %>
+	</div>

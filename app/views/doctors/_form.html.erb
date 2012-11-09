@@ -1,0 +1,21 @@
+<%= simple_form_for(@doctor, html: {multipart: true }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, label: "名称" %>
+    <%= f.input :level, label: "职称" %>
+    <%= f.input :sex, label: "性别" %>
+    <%= f.input :age, label: "年龄" %>
+    <%= f.input :hostpital, label: "所属医院" %>
+    <%= f.input :office, label: "所属科室" %>
+    <%= f.input :major, label: "主治范围" %>
+    <%= f.input :desc, label: "个人介绍" %>
+    <%= f.input :out_call, label: "出诊时间" %>
+		<%= file_field_tag :attachment %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, {:class => "btn btn-primary"} %>
+		<%= link_to 'Back', doctors_path, {:class => "btn"} %>
+  </div>
+<% end %>

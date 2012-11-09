@@ -1,0 +1,16 @@
+<%= simple_form_for(@repository) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :base_type, :collection => Repository::REPOSITORY_TYPE, :prompt => false %>
+    <%= f.input :title %>
+    <%= f.input :content_url %>
+    <%= f.input :category %>
+    <%= f.input :content, :input_html => {:class => "content"} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, {:class => 'btn btn-primary'} %>
+		<%= link_to "Back", repositories_path, {:class => 'btn'} %>
+  </div>
+<% end %>

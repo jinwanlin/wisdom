@@ -1,0 +1,39 @@
+<% content_for :header do -%>
+	<h3>社区卫生服务站列表</h3>
+<% end -%>
+
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Community name</th>
+    <th>Location</th>
+    <th>Essence</th>
+    <th>Desc</th>
+    <th>Contact</th>
+    <th>Workingtime</th>
+    <th>Openoffice</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @community_health_stations.each do |community_health_station| %>
+  <tr>
+    <td><%= community_health_station.name %></td>
+    <td><%= community_health_station.community_name %></td>
+    <td><%= community_health_station.location %></td>
+    <td><%= community_health_station.essence %></td>
+    <td><%= community_health_station.desc %></td>
+    <td><%= community_health_station.contact %></td>
+    <td><%= community_health_station.workingtime %></td>
+    <td><%= community_health_station.openoffice %></td>
+    <td><%= link_to 'Show', community_health_station %></td>
+    <td><%= link_to 'Edit', edit_community_health_station_path(community_health_station) %></td>
+    <td><%= link_to 'Destroy', community_health_station, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Create Community health station', new_community_health_station_path, {:class => "btn"} %>

@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @hospital.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @hospital.location %>
+</p>
+
+<p>
+  <b>Essence:</b>
+  <%= @hospital.essence %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @hospital.desc %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @hospital.contact %>
+</p>
+
+<p>
+  <b>Workingtime:</b>
+  <%= @hospital.workingtime %>
+</p>
+
+<p>
+  <b>Openoffice:</b>
+  <%= @hospital.openoffice %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @hospital.level %>
+</p>
+
+<p>
+	<b>Image:</b>
+	<% @hospital.attachments.each do |attachment| %>
+		<%= image_tag attachment.source.url(:thumb) %>
+	<% end  %>
+</p>
+
+<%= link_to 'Edit', edit_hospital_path(@hospital) %> |
+<%= link_to 'Back', hospitals_path %>
