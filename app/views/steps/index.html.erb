@@ -1,0 +1,29 @@
+<% content_for :header do%>
+	<h3>步骤</h3>
+<% end %>
+
+<table class="table table-hover">
+  <tr>
+    <th>Desc</th>
+    <th>Position</th>
+    <th>Article</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @steps.each do |step| %>
+  <tr>
+    <td><%= step.desc %></td>
+    <td><%= step.position %></td>
+    <td><%= step.article_id %></td>
+    <td><%= link_to 'Show', step %></td>
+    <td><%= link_to 'Edit', edit_step_path(step) %></td>
+    <td><%= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Step', new_step_path %>

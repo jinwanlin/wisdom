@@ -1,0 +1,37 @@
+<% content_for :header do -%>
+	<h3>美食文章</h3>
+<% end -%>
+
+<table class="table table-hover">
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Address</th>
+    <th>Contact</th>
+    <th>Workingtime</th>
+    <th>Author</th>
+    <th>Forum</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>
+    <td><%= article.title %></td>
+    <td><%= article.content %></td>
+    <td><%= article.address %></td>
+    <td><%= article.contact %></td>
+    <td><%= article.workingtime %></td>
+    <td><%= article.author_id %></td>
+    <td><%= article.forum_id %></td>
+    <td><%= link_to 'Show', article %></td>
+    <td><%= link_to 'Edit', edit_article_path(article) %></td>
+    <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Article', new_article_path %>

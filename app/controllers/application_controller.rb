@@ -9,6 +9,16 @@ class ApplicationController < ActionController::Base
     {:list => results, :page => results.current_page, :per_page => results.per_page, :total => results.total_entries}
   end
   
+  def add_attachments(object)
+    if params[:attachments]
+      params[:attachments].each do |attachment|
+        object.attachments << Attachment.new(:source => attachment) unless attachment.blank?
+      end
+    end
+  
+  end
+    
+  
   private
 
   def mobile_device?
@@ -25,5 +35,7 @@ class ApplicationController < ActionController::Base
     session[:mobile_param] = params[:mobile] if params[:mobile]
     request.format = :mobile if mobile_device?
   end
+  
+
   
 end

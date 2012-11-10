@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @author.name %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @author.desc %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @author.age %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%= @author.sex %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @author.contact %>
+</p>
+
+<p>
+	<b>Image:</b>
+	<% @author.attachments.each do |attachment| %>
+		<%= image_tag attachment.source.url(:thumb) %>
+	<% end  %>
+</p>
+
+
+<%= link_to 'Edit', edit_author_path(@author) %> |
+<%= link_to 'Back', authors_path %>

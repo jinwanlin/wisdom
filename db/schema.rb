@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110023754) do
+ActiveRecord::Schema.define(:version => 20121110102642) do
+
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "address"
+    t.string   "contact"
+    t.string   "workingtime"
+    t.integer  "author_id"
+    t.integer  "forum_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "attachments", :force => true do |t|
     t.datetime "created_at",          :null => false
@@ -22,6 +34,16 @@ ActiveRecord::Schema.define(:version => 20121110023754) do
     t.datetime "source_updated_at"
     t.integer  "owner_id"
     t.string   "owner_type"
+  end
+
+  create_table "authors", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.integer  "age"
+    t.string   "sex"
+    t.string   "contact"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "communities", :force => true do |t|
@@ -73,6 +95,14 @@ ActiveRecord::Schema.define(:version => 20121110023754) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "forums", :force => true do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.string   "need_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "hospitals", :force => true do |t|
     t.string   "name"
     t.string   "location"
@@ -97,6 +127,15 @@ ActiveRecord::Schema.define(:version => 20121110023754) do
     t.text     "desc"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "materials", :force => true do |t|
+    t.string   "material_type"
+    t.string   "name"
+    t.string   "amount"
+    t.integer  "article_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "merchants", :force => true do |t|
@@ -152,6 +191,14 @@ ActiveRecord::Schema.define(:version => 20121110023754) do
     t.string   "rate"
     t.string   "contact"
     t.text     "desc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "steps", :force => true do |t|
+    t.text     "desc"
+    t.integer  "position"
+    t.integer  "article_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

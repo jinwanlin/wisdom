@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @forum.name %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @forum.position %>
+</p>
+
+<p>
+  <b>Need type:</b>
+  <%= @forum.need_type %>
+</p>
+
+<p>
+	<b>Image:</b>
+	<% @forum.attachments.each do |attachment| %>
+		<%= image_tag attachment.source.url(:thumb) %>
+	<% end  %>
+</p>
+
+<%#= render 'articles/form' %>
+
+<%= link_to 'Edit', edit_forum_path(@forum) %> |
+<%= link_to 'Back', forums_path %>

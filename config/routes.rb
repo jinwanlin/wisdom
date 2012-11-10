@@ -1,5 +1,15 @@
 Wisdom::Application.routes.draw do
   
+  resources :steps
+
+  resources :materials
+
+  resources :articles
+
+  resources :authors
+
+  resources :forums
+
   get "/get_zhengwu" => "repositories#get_zhengwu"
   
   resources :repositories

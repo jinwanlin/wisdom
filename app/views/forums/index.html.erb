@@ -1,0 +1,29 @@
+<% content_for :header do -%>
+	<h3>类型</h3>
+<% end -%>
+
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Position</th>
+    <th>Need type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @forums.each do |forum| %>
+  <tr>
+    <td><%= link_to forum.name, forum %></td>
+    <td><%= forum.position %></td>
+    <td><%= forum.need_type %></td>
+    <td><%= link_to 'Show', forum %></td>
+    <td><%= link_to 'Edit', edit_forum_path(forum) %></td>
+    <td><%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Forum', new_forum_path %>

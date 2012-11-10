@@ -1,0 +1,21 @@
+<%= simple_form_for(@author, html:{multipart: true}) do |f| %>
+  <%= f.error_notification %>
+
+<div style="padding: 0px 68px; ">
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :desc %>
+    <%= f.input :age %>
+    <%= f.input :sex %>
+    <%= f.input :contact %>
+		<div id="addfile">
+			<%= file_field_tag "attachments[]" %><br/>
+		</div>
+		<input type='button' value="add file" onclick="add_file();" class="btn btn-info" >
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+</div>

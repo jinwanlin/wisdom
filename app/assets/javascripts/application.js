@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+function add_file() {
+	$("#addfile").append('<input id="attachments_" name="attachments[]" type="file"><br/>');
+}

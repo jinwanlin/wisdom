@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @article.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @article.content %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @article.address %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @article.contact %>
+</p>
+
+<p>
+  <b>Workingtime:</b>
+  <%= @article.workingtime %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @article.author_id %>
+</p>
+
+<p>
+  <b>Forum:</b>
+  <%= @article.forum_id %>
+</p>
+
+
+<p>
+	<b>Image:</b>
+	<% @article.attachments.each do |attachment| %>
+		<%= image_tag attachment.source.url(:thumb) %>
+	<% end  %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
