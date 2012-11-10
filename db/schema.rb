@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108030534) do
+ActiveRecord::Schema.define(:version => 20121110023754) do
 
   create_table "attachments", :force => true do |t|
     t.datetime "created_at",          :null => false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20121108030534) do
   create_table "communities", :force => true do |t|
     t.string   "name"
     t.string   "location"
-    t.string   "desc"
+    t.text     "desc"
     t.string   "score"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(:version => 20121108030534) do
     t.string   "community_name"
     t.string   "location"
     t.string   "essence"
-    t.string   "desc"
+    t.text     "desc"
     t.string   "contact"
     t.string   "workingtime"
-    t.string   "openoffice"
+    t.text     "openoffice"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(:version => 20121108030534) do
     t.string   "age"
     t.string   "hostpital"
     t.string   "office"
-    t.string   "major"
-    t.string   "desc"
+    t.text     "major"
+    t.text     "desc"
     t.string   "out_call"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -77,10 +77,10 @@ ActiveRecord::Schema.define(:version => 20121108030534) do
     t.string   "name"
     t.string   "location"
     t.string   "essence"
-    t.string   "desc"
+    t.text     "desc"
     t.string   "contact"
     t.string   "workingtime"
-    t.string   "openoffice"
+    t.text     "openoffice"
     t.string   "level"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(:version => 20121108030534) do
     t.string   "contact"
     t.integer  "position"
     t.string   "location"
-    t.string   "desc"
+    t.text     "desc"
     t.string   "v_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false

@@ -14,7 +14,7 @@
     <%= f.input :essence, label: "性质" %>
     <%= f.input :contact, label: "联系方式" %>
     <%= f.input :workingtime, label: "营业时间" %>
-    <%= f.input :openoffice, label: "开放科室" %>
+    <%= f.input :openoffice, label: "开放科室", input_html: {class: 'content'} %>
 		<%= f.input :desc, label: "介绍", as: 'text', input_html:{class: 'content'} %>
 
 		<div id="addfile">

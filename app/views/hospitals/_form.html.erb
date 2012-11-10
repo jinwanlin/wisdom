@@ -12,11 +12,11 @@
 	    <%= f.input :name, label: "名称" %>
 	    <%= f.input :location, label: "地址" %>
 	    <%= f.input :essence, label: "医院性质" %>
-	    <%= f.input :desc, label: "介绍" %>
 	    <%= f.input :contact, label: "联系方式" %>
 	    <%= f.input :workingtime, label: "营业时间" %>
-	    <%= f.input :openoffice, label: "开放科室" %>
 	    <%= f.input :level, label: "医院等级" %>
+			<%= f.input :openoffice, label: "开放科室", input_html: {class: 'content'} %>
+			<%= f.input :desc, label: "介绍", input_html: {class: 'content'} %>
 			
 			<div id="addfile">
 				<%= file_field_tag "attachments[]" %><br/>
