@@ -7,7 +7,7 @@ class StepsController < ApplicationController
     if params[:article_id].present?
       @steps = @steps.where(article_id: params[:article_id])
     end
-    @steps = @steps.order('created_at DESC')
+    @steps = @steps.order('created_at ASC')
     
     respond_to do |format|
       format.html # index.html.erb

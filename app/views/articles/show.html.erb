@@ -1,3 +1,79 @@
+<script type="text/javascript">
+	//用jquery的ajaxSubmit异步提交
+	function addMaterial(){
+        $("#form1").ajaxSubmit({
+            //url:'/materials.json', //这里可以不写, 但如果写了就会覆盖form表单里写的url
+			//type:'post', //这里可以不写, 但如果写了就会覆盖form表单里写的method
+			dataType:'json',
+			success:function(data){
+            	var str = '<div id="material_'+data.id+'">'
+            				+data.name + ':' + data.amount + ' <input type="button" value="删除" onclick="deleteMaterial('+data.id+')" />'
+            				+'</div>' ;
+            	$("#materials").append(str);
+            	
+            	$("#material_name").val("");
+            	$("#material_amount").val("");
+			}
+         }
+       );
+	}  
+	
+	function deleteMaterial(id){
+		$.ajax({
+		   type: "POST",
+		   async: false, // 默认true:异步, 同步false    注意: 同步请求将锁住浏览器，用户其它操作必须等待请求完成才可以执行。
+		   dataType: "json",//返回json格式的数据
+		   url: "/materials/"+id+".json",
+		   data: "_method=delete",
+		   success: function(data){
+			   	$("#material_"+id).remove();
+		   },
+		   error: function(msg) {
+	           alert("Data not found");
+	      }
+	});
+		
+	}
+	
+	
+	function addStep(){
+        $("#step1").ajaxSubmit({
+            url:'/steps.json', //这里可以不写, 但如果写了就会覆盖form表单里写的url
+			type:'post', //这里可以不写, 但如果写了就会覆盖form表单里写的method
+			dataType:'json',
+			success:function(data){
+            	var str = '<div id="step_'+data.id+'">'
+            				+ data.position + ':'  + data.desc + '<img src="" /> <input type="button" value="删除" onclick="deleteStep('+data.id+')" />'
+            				+'</div>' ;
+            	$("#steps").append(str);
+
+            	$("#step_desc").val("");
+            	$("#step_position").val("");
+            	$("#attachments_").val("");
+			}
+         }
+       );
+	}
+	
+	function deleteStep(id){
+		$.ajax({
+		   type: "POST",
+		   async: false, // 默认true:异步, 同步false    注意: 同步请求将锁住浏览器，用户其它操作必须等待请求完成才可以执行。
+		   dataType: "json",//返回json格式的数据
+		   url: "/steps/"+id+".json",
+		   data: "_method=delete",
+		   success: function(data){
+			   	$("#step_"+id).remove();
+		   },
+		   error: function(msg) {
+	           alert("Data not found");
+	      }
+	});
+		
+	}
+		
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -42,6 +118,49 @@
 		<%= image_tag attachment.source.url(:thumb) %>
 	<% end  %>
 </p>
+
+<!-- <div id="materials">
+	<% @article.materials.each do |material| %>
+    <div id="material_<%= material.id %>">
+    	<%= material.name %>:<%= material.amount %>
+	    <input type="button" value="删除" onclick="deleteMaterial(<%= material.id %>)" />
+    </div>
+	<% end %>
+</div>
+<p>
+	<form action="/materials.json" id="form1" method="post">
+		name:<input type="text" size="50" name="material[name]" id="material_name" class="string optional" style="width:100px;">
+	    Amount:<input type="text" size="50" name="material[amount]" id="material_amount" class="string optional" style="width:50px;">
+	    <input type="hidden" name="material[article_id]" id="material_article_id" value="<%= @article.id %>" >
+		<input type="button" onclick="addMaterial();" value="添加食材" />
+	</form>
+</p>
+
+
+<div id="steps">
+	<% @article.steps.each do |step| %>
+    <div id="step_<%= step.id %>">
+    	<%= step.position %>:<%= step.desc %>
+    	<% if step.attachments.size > 0 %>
+	    	<% step.attachments.each do |attachment| %>
+				<%= image_tag attachment.source.url(:thumb) %>
+			<% end  %>
+		<% end  %>
+	    <input type="button" value="删除" onclick="deleteStep(<%= step.id %>)" />
+    </div>
+<% end %>
+</div>
+	
+<p>
+	<form action="/steps.json" id="step1" method="post">
+		position:<input type="number" " size="50" name="step[position]" id="step_position" class="string optional" style="width:50px;" >
+		desc:<input type="text" size="50" name="step[desc]" id="step_desc" class="string optional"  style="width:100px;" >
+	    attachment:<input type="file" name="attachments[]" id="attachments_">
+	    <input type="hidden" name="step[article_id]" id="step_article_id" value="<%= @article.id %>">
+		<input type="button" onclick="addStep();" value="添加步骤" />
+	</form>
+</p> -->
+
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
