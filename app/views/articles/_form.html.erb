@@ -7,8 +7,8 @@
     <%= f.input :address %>
     <%= f.input :contact %>
     <%= f.input :workingtime %>
-    <%= f.input :author_id %>
-    <%= f.input :forum_id %>
+    <%= f.association :author %>
+    <%= f.association :forum %>
     <%= f.input :content, :input_html => {:class => "content"} %>
 		<div id="addfile">
 			<%= file_field_tag "attachments[]" %><br/>

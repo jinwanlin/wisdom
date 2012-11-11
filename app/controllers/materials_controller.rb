@@ -2,8 +2,13 @@ class MaterialsController < ApplicationController
   # GET /materials
   # GET /materials.json
   def index
-    @materials = Material.all
+    @materials = Material
 
+    if params[:article_id].present?
+      @materials = @materials.where(article_id: params[:article_id])
+    end
+    @materials = @materials.order('created_at DESC')
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @materials }
@@ -25,6 +30,8 @@ class MaterialsController < ApplicationController
   # GET /materials/new.json
   def new
     @material = Material.new
+    # @articles = Article.where("forums.need_type = ? AND Articles.id == Forums.id", Forum::NEED_TYPE[0]).joins(:forums)
+    @articles = Forum.where(:need_type => Forum::NEED_TYPE[0]).first.articles
 
     respond_to do |format|
       format.html # new.html.erb

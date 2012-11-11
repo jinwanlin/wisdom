@@ -3,9 +3,9 @@
 
 <div style="padding: 0px 68px; ">
   <div class="form-inputs">
-    <%= f.input :desc %>
     <%= f.input :position %>
-    <%= f.input :article_id %>
+    <%= f.input :article_id, :collection => @articles %>
+    <%= f.input :desc, :input_html => {:class => "content"} %>
 		<div id="addfile">
 			<%= file_field_tag "attachments[]" %><br/>
 		</div>

@@ -2,8 +2,13 @@ class StepsController < ApplicationController
   # GET /steps
   # GET /steps.json
   def index
-    @steps = Step.all
+    @steps = Step
 
+    if params[:article_id].present?
+      @steps = @steps.where(article_id: params[:article_id])
+    end
+    @steps = @steps.order('created_at DESC')
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @steps }
@@ -25,6 +30,7 @@ class StepsController < ApplicationController
   # GET /steps/new.json
   def new
     @step = Step.new
+    @articles = Forum.where(:need_type => Forum::NEED_TYPE[0]).first.articles
 
     respond_to do |format|
       format.html # new.html.erb

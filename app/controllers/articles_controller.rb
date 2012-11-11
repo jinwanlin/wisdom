@@ -2,7 +2,13 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article
+    if params[:forum_id].present?
+      @articles = @articles.where(forum_id: params[:forum_id])
+    elsif params[:author_id].present?
+      @articles = @articles.where(author_id: params[:author_id])      
+    end
+    @articles = @articles.order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
