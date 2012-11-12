@@ -10,13 +10,19 @@ class Note < ActiveRecord::Base
   has_many :attachments, :as => :owner
   
   def as_json(options={})
-    super(:only => [:id, :community_id, :content, :children_count, :created_at], :methods => [:image, :user_info])
+    super(:only => [:id, :community_id, :content, :children_count, :created_at], 
+                :methods => [:image, :image_thumb,  :user_info])
   end
 
   
   def image
     Settings.base_url + self.attachments.first.source.url unless self.attachments.blank?
   end
+  
+  def image_thumb
+    Settings.base_url + self.attachments.first.source.url(:thumb) unless self.attachments.blank?
+  end
+
   
   def user_info
     # self.user.as_json

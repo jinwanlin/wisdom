@@ -8,11 +8,11 @@ class ArticlesController < ApplicationController
     elsif params[:author_id].present?
       @articles = @articles.where(author_id: params[:author_id])      
     end
-    @articles = @articles.order('created_at DESC')
+    @articles = @articles.order('created_at DESC').paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @articles }
+      format.json { render json: to_json_with_pagination(@articles) }
     end
   end
 

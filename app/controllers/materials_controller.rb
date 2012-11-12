@@ -7,11 +7,11 @@ class MaterialsController < ApplicationController
     if params[:article_id].present?
       @materials = @materials.where(article_id: params[:article_id])
     end
-    @materials = @materials.order('created_at DESC')
+    @materials = @materials.order('created_at ASC').paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @materials }
+      format.json { render json: to_json_with_pagination(@materials) }
     end
   end
 

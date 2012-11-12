@@ -2,16 +2,15 @@ class StepsController < ApplicationController
   # GET /steps
   # GET /steps.json
   def index
-    @steps = Step
+    @steps = Step.order("created_at ASC").paginate :page => params[:page], :per_page => params[:per_page]
 
     if params[:article_id].present?
       @steps = @steps.where(article_id: params[:article_id])
     end
-    @steps = @steps.order('created_at ASC')
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @steps }
+      format.json { render json: to_json_with_pagination(@steps) }
     end
   end
 

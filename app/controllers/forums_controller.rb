@@ -2,11 +2,11 @@ class ForumsController < ApplicationController
   # GET /forums
   # GET /forums.json
   def index
-    @forums = Forum.all
+    @forums = Forum.paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @forums }
+      format.json { render json: to_json_with_pagination(@forums) }
     end
   end
 

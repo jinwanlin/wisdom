@@ -8,6 +8,6 @@ class Doctor < ActiveRecord::Base
   end
   
   def image
-    Settings.base_url + self.attachments.first.source.url unless self.attachments.blank?
+    Settings.base_url + self.attachments.first.source.url(:thumb) unless self.attachments.blank?
   end
 end

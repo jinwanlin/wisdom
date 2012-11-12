@@ -9,7 +9,7 @@ class Hospital < ActiveRecord::Base
   
   def cover
     if self.attachments.present?
-      return Settings.base_url + attachments.first.source.url
+      return Settings.base_url + attachments.first.source.url(:thumb)
     end
   end
   
@@ -17,7 +17,7 @@ class Hospital < ActiveRecord::Base
     if self.attachments.present?
       images = []
       self.attachments.each do |attachment|
-        images << {:url => Settings.base_url + attachment.source.url}
+        images << {:url => Settings.base_url + attachment.source.url, :url_thumb => Settings.base_url + attachment.source.url(:thumb) }
       end
     end
     return images

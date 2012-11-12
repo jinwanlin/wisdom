@@ -41,12 +41,16 @@
 			position: absolute;
 			display: block;
 			width: 46%;
+			height:24px;
+			line-height:24px;
 			background-color: #fff;
 			z-index: 99;
 			text-decoration: none;
 			margin-top: 1px;
-			alpha(opacity=50);
-			opacity: 0.5;
+			alpha(opacity=70);
+			opacity: 0.7;
+			overflow:hidden;
+			text-align:center;
 		}
 		.name{
 			line-height: 24px;
@@ -98,13 +102,13 @@
 				n.css("top", h1+"px");
 				n.css("left", "2%");
 				h1 = parseInt(h1) + parseInt(height) + 10;
-				n.next().css("top", h1-24+border_width+"px");
+				n.next().css("top", h1-30+border_width+"px");
 				n.next().css("left", border_width+winW/50);
 			}else{
 				n.css("top", h2+"px");
 				n.css("left", "51%");
 				h2 = parseInt(h2) + parseInt(height) + 10;
-				n.next().css("top", h2-24+border_width+"px");
+				n.next().css("top", h2-30+border_width+"px");
 				n.next().css("left", winW/2+border_width+winW/100);
 			}
 			

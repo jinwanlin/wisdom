@@ -1,5 +1,7 @@
 Wisdom::Application.routes.draw do
   
+  get "home/index"
+
   resources :forums  do
     resources :articles
   end
@@ -18,10 +20,7 @@ Wisdom::Application.routes.draw do
   resources :materials
 
 
-
-  
-
-  get "/get_zhengwu" => "repositories#get_zhengwu"
+  get "/zcfg" => "repositories#zcfg"
   
   resources :repositories
 
@@ -118,7 +117,7 @@ Wisdom::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'news#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

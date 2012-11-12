@@ -2,11 +2,11 @@ class SecondsController < ApplicationController
   # GET /seconds
   # GET /seconds.json
   def index
-    @seconds = Second.all
+    @seconds = Second.order("created_at DESC").paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @seconds }
+      format.json { render json: to_json_with_pagination(@seconds) }
     end
   end
 

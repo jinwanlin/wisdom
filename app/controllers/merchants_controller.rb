@@ -7,11 +7,11 @@ class MerchantsController < ApplicationController
     if params[:type].present?
       @merchants = @merchants.where(:service_type => params[:type])
     end
-      @merchants = @merchants.order("created_at DESC")
+      @merchants = @merchants.order("created_at DESC").paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @merchants }
+      format.json { render json: to_json_with_pagination(@merchants) }
     end
   end
 

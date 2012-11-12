@@ -2,11 +2,11 @@ class AuthorsController < ApplicationController
   # GET /authors
   # GET /authors.json
   def index
-    @authors = Author.all
+    @authors = Author.paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @authors }
+      format.json { render json: to_json_with_pagination(@authors) }
     end
   end
 

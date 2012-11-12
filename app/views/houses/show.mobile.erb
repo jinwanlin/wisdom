@@ -52,6 +52,14 @@ body,  img{
 			color: #3572a5;
 			font-weight: 700;
 		}
+		
+		.address, .desc{
+			margin: 10px 5px;
+			line-height: 24px;
+		}
+		.address>div, .desc>div{
+			line-height: 24px;
+		}
 		</style>
 	</head>
 	<body>
@@ -62,27 +70,27 @@ body,  img{
 			<div class="title">
 				<%= @house.title %>
 			</div>
-			<hr>
-			<dl>
-				<dt>
-					地址：
-				</dt>
-				<dd>
+			<hr style="border:1px solid #e0e1e3;">
+			
+			<div class="desc">
+				<span style="color: #3572a5;">地址：</span>
+				<span class="content">
 					<%= @house.location %>
-				</dd>
-				<dt>
-					电话：
-				</dt>
-				<dd>
+				</span>
+			</div>
+			<div class="desc">
+				<span style="color: #3572a5;">电话：</span>
+				<span class="content">
 					<%= @house.contact %>
-				</dd>
-				<dt>
-					服务介绍：
-				</dt>
-				<dd>
+				</span>
+			</div>
+			<div class="desc">
+				<span style="color: #3572a5;">服务介绍：</span>
+				<span class="content">
 					<%= @house.desc %>
-				</dd>
-			</dl>
+				</span>
+			</div>
+			
 			<% if @house.attachments.size > 1 %>
 				<% @house.attachments[1..-1].each do |attachment| %>
 					<div class="logo">

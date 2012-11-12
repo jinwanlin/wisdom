@@ -13,7 +13,7 @@ class Forum < ActiveRecord::Base
   
   def cover
     if self.attachments.present?
-      return Settings.base_url + attachments.first.source.url
+      return Settings.base_url + attachments.last.source.url
     end
   end
   

@@ -4,28 +4,33 @@ class RepositoriesController < ApplicationController
   # GET /repositories.json
   def index
     @repositories = Repository
-    @repositories = @repositories.where(:base_type => "健康")
     @repositories = @repositories.order("created_at DESC").paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: to_json_with_pagination(@repositories) }
+      format.json { 
+        @repositories = @repositories.where(:base_type => "健康")
+        render json: to_json_with_pagination(@repositories) 
+      }
     end
   end
 
-  def get_zhengwu
-    @zhengwus = []
-    list = []
-    @zhengwus.each do |l|
-      title = l.title
-      url = l.url
-      list << {title: title, url: url}
-    end
+  def zcfg
+    type = params[:type]
+    @repositories = Repository
+    @repositories = @repositories.where(:base_type => type)
+    @repositories = @repositories.order("created_at DESC").paginate :page => params[:page], :per_page => params[:per_page]
+    
+    # @zhengwus = []
+    # list = []
+    # @zhengwus.each do |l|
+    #   title = l.title
+    #   url = l.url
+    #   list << {title: title, url: url}
+    # end
     
     respond_to do |format|
-      format.json {
-        render json: {:list => list}
-      }
+      format.json { render json: to_json_with_pagination(@repositories) }
     end
   end
   
