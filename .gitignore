@@ -16,6 +16,7 @@ config/database.yml
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/public/attachment
 /public/system
 /public/assets
 config/settings.local.yml
