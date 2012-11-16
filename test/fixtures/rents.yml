@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  rent_type: MyString
+  price: MyString
+  live_type: MyString
+  community_id: 1
+  area: MyString
+  shape: MyString
+  floor: MyString
+  decoration: MyString
+  fitment: MyString
+  orientation: MyString
+  show_time: MyString
+  live_time: MyString
+  build_time: MyString
+  location: MyString
+  desc: MyString
+  contact_people: MyString
+  contact: MyString
+  near: MyString
+  traffic: MyString
+
+two:
+  title: MyString
+  rent_type: MyString
+  price: MyString
+  live_type: MyString
+  community_id: 1
+  area: MyString
+  shape: MyString
+  floor: MyString
+  decoration: MyString
+  fitment: MyString
+  orientation: MyString
+  show_time: MyString
+  live_time: MyString
+  build_time: MyString
+  location: MyString
+  desc: MyString
+  contact_people: MyString
+  contact: MyString
+  near: MyString
+  traffic: MyString

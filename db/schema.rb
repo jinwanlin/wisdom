@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110102642) do
+ActiveRecord::Schema.define(:version => 20121114075142) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -172,6 +172,45 @@ ActiveRecord::Schema.define(:version => 20121110102642) do
   end
 
   add_index "notes", ["user_id"], :name => "index_notes_on_user_id"
+
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "rents", :force => true do |t|
+    t.string   "title"
+    t.string   "rent_type"
+    t.string   "people_type"
+    t.integer  "price"
+    t.string   "live_type"
+    t.integer  "community_id"
+    t.integer  "area"
+    t.string   "shape"
+    t.string   "floor"
+    t.string   "decoration"
+    t.string   "fitment"
+    t.string   "orientation"
+    t.string   "show_time"
+    t.string   "live_time"
+    t.string   "build_time"
+    t.string   "location"
+    t.text     "desc"
+    t.string   "contact_people"
+    t.string   "contact"
+    t.text     "near"
+    t.text     "traffic"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "repositories", :force => true do |t|
     t.string   "base_type"

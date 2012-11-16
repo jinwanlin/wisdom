@@ -1,5 +1,7 @@
 Wisdom::Application.routes.draw do
   
+  resources :rents
+
   get "home/index"
 
   resources :forums  do

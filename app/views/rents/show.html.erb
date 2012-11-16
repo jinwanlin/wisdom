@@ -1,0 +1,111 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @rent.title %>
+</p>
+
+<p>
+  <b>Rent type:</b>
+  <%= @rent.rent_type %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @rent.price %>
+</p>
+
+<p>
+  <b>Live type:</b>
+  <%= @rent.live_type %>
+</p>
+
+<p>
+  <b>Community:</b>
+  <%= @rent.community_id %>
+</p>
+
+<p>
+  <b>Area:</b>
+  <%= @rent.area %>
+</p>
+
+<p>
+  <b>Shape:</b>
+  <%= @rent.shape %>
+</p>
+
+<p>
+  <b>Floor:</b>
+  <%= @rent.floor %>
+</p>
+
+<p>
+  <b>Decoration:</b>
+  <%= @rent.decoration %>
+</p>
+
+<p>
+  <b>Fitment:</b>
+  <%= @rent.fitment %>
+</p>
+
+<p>
+  <b>Orientation:</b>
+  <%= @rent.orientation %>
+</p>
+
+<p>
+  <b>Show time:</b>
+  <%= @rent.show_time %>
+</p>
+
+<p>
+  <b>Live time:</b>
+  <%= @rent.live_time %>
+</p>
+
+<p>
+  <b>Build time:</b>
+  <%= @rent.build_time %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @rent.location %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @rent.desc %>
+</p>
+
+<p>
+  <b>Contact people:</b>
+  <%= @rent.contact_people %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @rent.contact %>
+</p>
+
+<p>
+  <b>Near:</b>
+  <%= @rent.near %>
+</p>
+
+<p>
+  <b>Traffic:</b>
+  <%= @rent.traffic %>
+</p>
+
+<p>
+	<b>Image:</b>
+	<% @rent.attachments.each do |attachment| %>
+		<%= image_tag attachment.source.url(:thumb) %>
+	<% end  %>
+</p>
+
+<%= link_to 'Edit', edit_rent_path(@rent) %> |
+<%= link_to 'Back', rents_path %>

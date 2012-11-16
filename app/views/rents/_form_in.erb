@@ -1,0 +1,29 @@
+<%= simple_form_for(@rent, :html => {:multipart => true}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title, 			label: "标题" %>
+    <%= f.input :rent_type, 	label: "出租方式", input_html:{ value: "求租" }, :readonly => true %>
+    <%= f.input :price, 			label: "期望租金(元/月)" %>
+    <%= f.input :live_type, 	label: "居住方式", :collection => Rent::LIVE_TYPE, :prompt => false %>
+    <%= f.association :community, label: "期望小区", :prompt => false %>
+    <%= f.input :decoration, 	label: "装修程度" %>
+    <%= f.input :fitment, 		label: "配套设施" %>
+    <%= f.input :show_time, 	label: "看房时间" %>
+    <%= f.input :live_time, 	label: "入住时间" %>
+    <%= f.input :location, 		label: "地址" %>
+    <%= f.input :contact_people, label: "联系人" %>
+    <%= f.input :contact, 		label: "联系电话" %>
+    <%= f.input :desc, 				label: "其他要求", input_html: {class: 'content'}  %>
+		<div id="addfile">
+			<%= file_field_tag "attachments[]" %><br/>
+		</div>
+		<input type='button' value="add file" onclick="add_file();" class="btn btn-info" >
+		
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+		<%= link_to 'Back', rents_path, class: 'btn' %>
+  </div>
+<% end %>

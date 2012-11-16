@@ -1,0 +1,37 @@
+<%= simple_form_for(@rent, :html => {:multipart => true}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title, 			label: "标题" %>
+		<%= f.input :people_type,	label: "发布者类型", :collection => Rent::PEOPLE_TYPE, :prompt => false %>
+    <%= f.input :rent_type, 	label: "出租方式", input_html:{ value: "出租" }, :readonly => true %>
+    <%= f.input :price, 			label: "租金(元/月)" %>
+    <%= f.input :live_type, 	label: "居住方式", :collection => Rent::LIVE_TYPE, :prompt => false %>
+    <%= f.association :community, label: "所属社区", :prompt => false %>
+    <%= f.input :area, 				label: "面积" %>
+    <%= f.input :shape, 			label: "户型" %>
+    <%= f.input :floor, 			label: "楼层" %>
+    <%= f.input :decoration, 	label: "装修程度" %>
+    <%= f.input :fitment, 		label: "配套设施" %>
+    <%= f.input :orientation, label: "朝向" %>
+    <%= f.input :show_time, 	label: "看房时间" %>
+    <%= f.input :live_time, 	label: "入住时间" %>
+    <%= f.input :build_time, 	label: "房屋年代" %>
+    <%= f.input :location, 		label: "地址" %>
+    <%= f.input :contact_people, label: "联系人" %>
+    <%= f.input :contact, 		label: "联系电话" %>
+    <%= f.input :desc, 				label: "房屋介绍", input_html: {class: 'content'}  %>
+    <%= f.input :near, 				label: "附近设施", input_html: {class: 'content'}  %>
+    <%= f.input :traffic,		 	label: "交通配套", input_html: {class: 'content'}  %>
+		<div id="addfile">
+			<%= file_field_tag "attachments[]" %><br/>
+		</div>
+		<input type='button' value="add file" onclick="add_file();" class="btn btn-info" >
+		
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+		<%= link_to 'Back', rents_path, class: 'btn' %>
+  </div>
+<% end %>

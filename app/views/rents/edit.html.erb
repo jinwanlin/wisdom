@@ -1,0 +1,10 @@
+<div style="padding: 0px 68px; ">
+	<% if @rent.rent_type == Rent::RENT_TYPE[0] %>
+		<%= render 'form_out' %>
+	<% elsif @rent.rent_type == Rent::RENT_TYPE[1] %>
+		<%= render 'form_in' %>
+	<% end %>
+</div>
+
+<%= link_to 'Show', @rent %> |
+<%= link_to 'Back', rents_path %>

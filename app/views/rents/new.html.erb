@@ -1,0 +1,7 @@
+<div style="padding: 0px 68px; ">
+	<% if params[:type] == Rent::RENT_TYPE[0] %>
+		<%= render 'form_out' %>
+	<% elsif  params[:type] == Rent::RENT_TYPE[1] %>
+		<%= render 'form_in' %>
+	<% end %>
+</div>

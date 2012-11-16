@@ -1,0 +1,40 @@
+<% content_for :header do -%>
+	<h3>房屋信息列表</h3>
+<% end -%>
+
+<table class="table table-hover">
+  <tr>
+    <th>Title</th>
+    <th>Rent type</th>
+    <th>Price</th>
+    <th>Live type</th>
+    <th>Community</th>
+    <th>Location</th>
+    <th>Contact people</th>
+    <th>Contact</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rents.each do |rent| %>
+  <tr>
+    <td><%= rent.title %></td>
+    <td><%= rent.rent_type %></td>
+    <td><%= rent.price %></td>
+    <td><%= rent.live_type %></td>
+    <td><%= rent.community.try(:name) %></td>
+    <td><%= rent.location %></td>
+    <td><%= rent.contact_people %></td>
+    <td><%= rent.contact %></td>
+    <td><%= link_to 'Show', rent %></td>
+    <td><%= link_to 'Edit', edit_rent_path(rent) %></td>
+    <td><%= link_to 'Destroy', rent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '发布出租信息', new_rent_path(:type => Rent::RENT_TYPE[0]), {:class => "btn"} %>
+<%= link_to '发布求租信息', new_rent_path(:type => Rent::RENT_TYPE[1]), {:class => "btn"} %>
