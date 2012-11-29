@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114075142) do
+ActiveRecord::Schema.define(:version => 20121129024227) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -273,6 +273,14 @@ ActiveRecord::Schema.define(:version => 20121114075142) do
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "versions", :force => true do |t|
+    t.float    "version"
+    t.string   "url"
+    t.text     "desc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "weibo_tokens", :force => true do |t|
     t.string   "token"

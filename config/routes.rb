@@ -1,5 +1,12 @@
 Wisdom::Application.routes.draw do
   
+  resources :versions do
+    collection do
+      get 'last_version'
+    end
+  end
+
+  
   resources :rents
 
   get "home/index"

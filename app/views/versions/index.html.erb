@@ -1,0 +1,29 @@
+<% content_for :header do %>
+<h3>版本控制</h3>
+<% end %>
+
+<table class="table table-hover">
+  <tr>
+    <th>Version</th>
+    <th>Url</th>
+    <th>Desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @versions.each do |version| %>
+  <tr>
+    <td><%= version.version %></td>
+    <td><%= version.url %></td>
+    <td><%= version.desc %></td>
+    <td><%= link_to 'Show', version %></td>
+    <td><%= link_to 'Edit', edit_version_path(version) %></td>
+    <td><%= link_to 'Destroy', version, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Version', new_version_path, {:class => "btn"} %>

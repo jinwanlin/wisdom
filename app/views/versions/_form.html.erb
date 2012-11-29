@@ -1,0 +1,15 @@
+<%= simple_form_for(@version) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :version %>
+    <%= f.input :url, input_html: { value: 'http://61.128.122.51/attachment/wisdom.apk', 
+																		class: 'input-xxlarge'} %>
+    <%= f.input :desc, :input_html => {:class => 'content'} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, {:class => "btn btn-primary"} %>
+		<%= link_to 'Back', versions_path, {:class => "btn"} %>
+  </div>
+<% end %>
