@@ -23,8 +23,6 @@ class UsersController < ApplicationController
     else
       render :status => 401
     end
-    
-    
   end
   
   def login
@@ -33,11 +31,16 @@ class UsersController < ApplicationController
     avatar = params[:avatar]
     name = params[:name]
     
-    if account_type == "sina"
-      @user = User.find_by_sina_id(account_id) if account_id.present?
-      @user ||= User.create!(:sina_id => account_id, :email=> account_id + "@example.com", :password => "111111", 
-                            :name => name, :avatar => avatar)
+    unless account_id.present? && account_type.present?
+      render :text => "error".to_json, :status => 401
+      return
     end
+    
+    @user = User.where(provider: account_type, uid: account_id).first
+    @user ||= User.create!(:provider => account_type, :uid => account_id, 
+                    :email=> account_id + "@wisdom.com", :password => "111111", 
+                    :name => name, :avatar => avatar)
+    
     respond_to do |format|
       format.json {
         unless @user.nil?

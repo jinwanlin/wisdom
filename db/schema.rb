@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129024227) do
+ActiveRecord::Schema.define(:version => 20121129055114) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -268,6 +268,8 @@ ActiveRecord::Schema.define(:version => 20121129024227) do
     t.datetime "updated_at",                             :null => false
     t.integer  "community_id"
     t.string   "avatar"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
