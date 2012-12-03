@@ -1,87 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-	  <title>Wisdom</title>
-	  <%= stylesheet_link_tag    "application", :media => "all" %>
-	  <%= javascript_include_tag "application" %>
+<head>
+<meta charset="utf-8">
+<title>
+	智慧社区
+</title>
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= javascript_include_tag "application" %>
+<script>
+	 $(function(){
+	
+		$('.dropdown-toggle').dropdown();
+	 })
+	     
+	 </script>
+</head>
+<body>
 
-    <!-- Le styles -->
-    <style type="text/css">
-      body {
-        padding-top: 20px;
-        padding-bottom: 40px;
-      }
-
-      /* Custom container */
-      .container-narrow {
-        margin: 0 auto;
-        max-width: 700px;
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
-
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
-
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-    </style>
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-  </head>
-
-  <body>
-
-    <div class="container-narrow">
-
-      <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="">manager</a></li>
-        </ul>
-        <h3 class="muted">智慧社区库尔勒</h3>
+<div class="container-fluid">
+  <div class="navbar navbar-fixed-top" style="height:70px;">
+    <div class="navbar-inner" style="height:70px;">
+      <div class="container">
+       <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar"> 
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> 
+       </a> 
+       <a href="" class="brand"  style="padding-top: 20px; font-size:35px; font-weight:700;">
+				<%= image_tag '3.png', :size => "40x40", :style=>"margin-right:10px;" %>智慧社区</a>
+        <div class="nav-collapse" style="float:right">
+          <ul class="nav" style="padding-top: 10px; ">
+            <li class=" btn "> <a href="" style="padding-top: 5px; padding-bottom: 5px;">manager</a> </li>
+          </ul>
+        </div>
       </div>
+    </div>
+  </div>
+</div>
 
-      <hr>
 
-      <div class="jumbotron">
-				
-				<h1><%= image_tag "http://61.128.122.51/attachment/qr.gif", :size => "240x240" %></h1>
-					
-        <h4>扫描二维码以获取下载地址</h5><h6>或</h6><a class="btn btn-large btn-success" href="<%= Settings.base_url + '/attachment/wisdom.apk' %>">
-	点我 下载Android版</a>
+<div class="row-fluid" style="background-color:#dedfe1; padding-top:100px;">
+  <div class="container">
+    <div class="span12"> 
+      <div class="row-fluid">
+        <div class="span6">
+        	<h3>智慧社区库尔勒</h3>
+            <p>集生活,资讯,服务于一体的社区.让我们更爱生活.</p>
+            <h5>请选择下载安装方式:</h5>
+            <h5>方式一:</h5>
+            <p>扫描二维码以获取下载地址</p>
+            <p><%= image_tag "http://61.128.122.51/attachment/qr.gif", :size => "140x140" %></p>
+            <h5>方式二:</h5>
+            <p "><a class="btn btn-large btn-success" href="http://61.128.122.51/attachment/wisdom.apk" " style="margin-bottom: 16px;" > 点我 下载Android版<small>(<%= Version.last.version %>)</small></a></p>
+        </div>
+	
+        
+        <div class="span6">
+        	
+           <div class="carousel slide" id="myCarousel"  style="padding-top: 40px;">
+            <div class="carousel-inner">
+              <div class="item">
+                <%= image_tag "1.png" %>
+              </div>
+              <div class="item active">
+                 <%= image_tag "2.png" %>
+              </div>
+              
+            </div>
+            <a data-slide="prev" href="#myCarousel" class="left carousel-control">‹</a>
+            <a data-slide="next" href="#myCarousel" class="right carousel-control">›</a>
+          </div> 
+        </div>
       </div>
+    </div>
+  </div>
+</div>
 
 
-      <hr>
+<div class="footer"  style="margin-top:10px;    ">
+  <p style="padding:10px 0 10px 210px;">&copy; Company 2012</p>
+</div>
 
-      <div class="footer">
-        <p>&copy; Company 2012</p>
-      </div>
-
-    </div> <!-- /container -->
-
-
-  </body>
-</html>
+</dody>
